@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
-
+from collections import Counter
 
 
 # load mini training data and labels
@@ -16,23 +16,34 @@ mini_test = mini_test.reshape(10,2)
 
 # Define knn classifier
 def kNNClassify(newInput, dataSet, labels, k):
+    Inf=999
     result=[]
     ########################
     # Input your code here #
     ########################
-    
-    
-    
+    for i in mini_test:
+        L2=[]
+        for j in mini_train:
+            L2_dist=np.sqrt((i[0]-j[0])**2+(i[1]-j[1])**2)
+            L2.append(L2_dist)
+        Min_list=[]
+        for a in range(k):
+            Min_list.append(L2.index(min(L2)))
+            L2[L2.index(min(L2))]=Inf
+        classifier=[]
+        for b in Min_list:
+            classifier.append(mini_train_label[b])
+        #print(classifier)
+        result.append(Counter(classifier).most_common(1)[0][0])  
     ####################
     # End of your code #
     ####################
     return result
 
-outputlabels=kNNClassify(mini_test,mini_train,mini_train_label,4)
+outputlabels=kNNClassify(mini_test,mini_train,mini_train_label,6)
 
 print ('random test points are:', mini_test)
 print ('knn classfied labels for test:', outputlabels)
-
 # plot train data and classfied test data
 train_x = mini_train[:,0]
 train_y = mini_train[:,1]
