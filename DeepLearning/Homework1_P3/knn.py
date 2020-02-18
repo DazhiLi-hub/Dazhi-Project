@@ -1,8 +1,9 @@
-import math
+#import math
 import numpy as np  
 from download_mnist import load
-import operator  
+#import operator  
 import time
+from collections import Counter
 # classify using kNN  
 #x_train = np.load('../x_train.npy')
 #y_train = np.load('../y_train.npy')
@@ -18,7 +19,28 @@ def kNNClassify(newInput, dataSet, labels, k):
     ########################
     # Input your code here #
     ########################
-    
+    for i in newInput:
+        L2_dist=0
+        L2=[]
+        for j in dataSet:
+            '''
+            This kind of method is low_efficient and low_accurate
+            for row in range(28):
+                for column in range(28):
+                    L2_dist+=np.sqrt((i[row][column]-j[row][column])**2)
+            '''
+            L2_dist=np.sum(np.sqrt((i-j)**2))
+            L2.append(L2_dist)
+        Min_list=[]
+        for a in range(k):
+            Min_list.append(L2.index(min(L2)))
+            L2[L2.index(min(L2))]=float("inf")
+        classifier=[]
+        for b in Min_list:
+            classifier.append(labels[b])
+        #print(classifier)
+        result.append(Counter(classifier).most_common(1)[0][0])  
+       
     
     
     ####################
