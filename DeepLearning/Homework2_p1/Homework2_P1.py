@@ -24,10 +24,10 @@ def manual_com():
     d_1=d_2*math.cos(f_1)
     d_x_1=d_1*w_1
     d_w_1=d_1*x_1
-    print("The result of forward propagation is "+str(f_8))
-    print("The gradient of x1 is "+str(d_x_1))
-    print("The gradient of w1 is "+str(d_w_1))
-    print("The gradient of x2 is "+str(d_x_2))
-    print("The gradient of w2 is "+str(d_w_2))
+    print("The result of forward propagation is %.3f"%f_8)
+    print("The gradient of x1 is %.3f"%d_x_1)
+    print("The gradient of w1 is %.3f"%d_w_1)
+    print("The gradient of x2 is %.3f"%d_x_2)
+    print("The gradient of w2 is %.3f"%d_w_2)
 
 manual_com()
