@@ -1,0 +1,6 @@
+for $product in document("P1QA.xml")/products/product
+    where $product/store/markup = "25%"
+    return
+        <product>
+            {$product/name} {$product/price}
+        </product>

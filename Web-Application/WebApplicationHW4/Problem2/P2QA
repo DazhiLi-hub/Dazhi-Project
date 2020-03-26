@@ -1,0 +1,5 @@
+for $title in document("P2.xml")/broadway//title
+return
+<result>
+    {$title}
+</result>

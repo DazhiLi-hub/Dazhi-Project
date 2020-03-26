@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT PhD_theses (author,title,university,instructor?,year)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT university (#PCDATA)>
+<!ELEMENT instructor (#PCDATA)>
+<!ELEMENT year (#PCDATA)>

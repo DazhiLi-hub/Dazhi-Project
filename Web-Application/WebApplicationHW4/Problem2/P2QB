@@ -1,0 +1,6 @@
+for $a in document ("P2.xml")/broadway/theater[date="11/9/2008"]
+where data($a/price) < 35
+return
+<result>
+{$a/title}{$a/address}
+</result>

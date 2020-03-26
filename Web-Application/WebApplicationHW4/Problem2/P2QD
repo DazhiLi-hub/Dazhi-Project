@@ -1,0 +1,16 @@
+<groupedByDate>
+    for $a in distinct-value(document("P2.xml")//date)
+    for $b in //theater[date=$a] | //concert[date=$a] | //opera[date=$a]
+    return
+    <day>
+        {$a}
+        <show>
+            <title>
+                {$b/title}
+            </title>
+            <price>
+                {$b/price}
+            </price>
+        </show>
+    </day>
+</groupedByDate>

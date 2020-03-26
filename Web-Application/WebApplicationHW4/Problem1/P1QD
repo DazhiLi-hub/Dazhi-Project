@@ -1,0 +1,4 @@
+select name,price from products,sells
+(where products.pid = sell.pid
+AND sell.markup = "25%"
+)

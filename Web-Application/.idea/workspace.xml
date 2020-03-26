@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c439b646-16bb-4932-a658-6580de766122" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1ZdVxHa5wn6QaDmrT2m9KfzwINw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Problem1" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c439b646-16bb-4932-a658-6580de766122" name="Default Changelist" comment="" />
+      <created>1585169202381</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585169202381</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3090" y="387" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585252454803">
+      <screen x="1680" y="23" width="1920" height="1057" />
+    </state>
+    <state x="1076" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.960@0.23.1680.960" timestamp="1585185599137" />
+    <state x="1076" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.961@0.23.1680.961" timestamp="1585191832684" />
+    <state x="3090" y="387" key="#com.intellij.fileTypes.FileTypeChooser/1680.23.1920.1057/0.23.1680.961@1680.23.1920.1057" timestamp="1585252454803" />
+    <state x="3095" y="387" key="#com.intellij.fileTypes.FileTypeChooser/1680.23.1920.1057/0.23.1680.963@1680.23.1920.1057" timestamp="1585248571519" />
+  </component>
+</project>

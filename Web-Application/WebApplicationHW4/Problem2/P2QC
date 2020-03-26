@@ -1,0 +1,6 @@
+for $title in document("P2.xml")/broadway/concert[type="chamber orchestra"]
+where avg(data($title/price)) >= 50
+return
+<result>
+    {$title/title}
+</result>

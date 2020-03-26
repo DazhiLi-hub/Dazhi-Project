@@ -1,0 +1,37 @@
+<book>
+    <author>Frank McCourt</author>
+    <title>Angela's Ashes</title>
+    <year>1996</year>
+    <publisher>Charles Scribner's Sons</publisher>
+</book>
+
+<book>
+    <author>Mary Karr</author>
+    <title>The Liars' Club</title>
+    <!-- missed year information -->
+    <publisher>Viking Press</publisher>
+</book>
+
+<article>
+    <author>Ruha Benjamin</author>
+    <title>Informed Refusal: Toward a Justicebased Bioethics</title>
+    <year>2016</year>
+    <volume>41</volume>
+    <page>
+        <from>967</from>
+        <to>990</to>
+    </page>
+    <journal>Science, Technology,& Human Values</journal>
+</article>
+
+<article>
+    <author>Lindsay Adams Smith</author>
+    <title>Identifying Democracy: Citizenship, DNA, and Identity in Postdictatorship Argentina</title>
+    <year>2016</year>
+    <volume>41</volume>
+    <page>
+        <from>1037</from>
+        <to>1062</to>
+    </page>
+    <!-- missed journal information -->
+</article>

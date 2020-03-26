@@ -1,0 +1,5 @@
+<!-- Adding two sub-elements to author -->
+<author>
+    <first_name>Leslie</first_name>
+    <last_name>Lamport</last_name>
+</author>
