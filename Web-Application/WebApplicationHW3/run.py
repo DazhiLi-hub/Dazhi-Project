@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import PolynomialFeatures
 import datetime
-import pandas as pd
 import pandas_datareader.data as web
 
 def history_data(stock,start,end):
