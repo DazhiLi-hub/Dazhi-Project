@@ -1,4 +1,5 @@
 import pymongo
+import json
 
 dnn_result=[{'latitude':182,'longitude':8,'park_no':1,'status':True,'plate':'B2BJUY'},
             {'latitude':182,'longitude':12,'park_no':2,'status':False,'plate':''},
