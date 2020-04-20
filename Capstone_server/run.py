@@ -1,6 +1,6 @@
 from flask import Flask,request
 import db
-import json
+from flask import jsonify
 
 last_update=None
 app = Flask(__name__)
@@ -29,19 +29,19 @@ def get_diff(list_a,list_b):
 def all_send():
     global last_update
     last_update=db.park.find_all()
-    return json.dumps(last_update)
+    return jsonify(last_update)
 
 @app.route('/empty',methods=['GET'])
 def empty_send():
     results=db.park.find_empty()
-    return json.dumps(results)
+    return jsonify(results)
 
 #getting URL eg. http://127.0.0.1:5000/yours?plate=D33LOP
 @app.route('/yours',methods=['GET'])
 def yours_send():
     plate=request.args.get('plate','Flask')
     results=db.park.find_yours(plate)
-    return json.dumps(results)
+    return jsonify(results)
 
 @app.route('/update',methods=['GET'])
 def update_send():
@@ -51,7 +51,7 @@ def update_send():
     print(new_update)
     results=get_diff(last_update,new_update)
     last_update=new_update
-    return json.dumps(results)
+    return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True)
