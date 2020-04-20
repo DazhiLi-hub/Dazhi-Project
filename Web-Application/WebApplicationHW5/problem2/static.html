@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework5</title>
+    <script src="calculate.js"></script>
+</head>
+<body style="background-color:lightgray">
+<h1 style="text-align:center">This is a website which will calculate the volume of objects</h1>
+<hr/>
+<h3>select the units first</h3>
+<input name="unit" type="radio" value="0" onclick="getvalue(this.value)">English
+<input name="unit" type="radio" value="1" onclick="getvalue(this.value)">SI unit
+<p style="font-family:arial;color:red;font-size:20px;">A paragraph.</p>
+<form>
+    PLase select a shape:
+<select id="shape">
+    <option value="0" selected="selected">-none-</option>
+  <option value ="1">Cylinder</option>
+  <option value ="2">Cone</option>
+  <option value="3">Sphere</option>
+</select>
+</form>
+<br/>
+<form action="">
+ Enter the radius:<br>
+<input id="radius" type="text" name="radius">
+<br>
+ For the Cylinder and Cone, please enter the height:<br>
+<input id="height" type="text" name="height">
+</form>
+<br/>
+<button type="button" onclick="calculate()">Click To Calculate!</button>
+<br/>
+<hr/>
+<h2>Result</h2>
+<p id="phase_1" style="font-family:arial;color:balck;font-size:16px;">You choose to use units</p>
+<p id="phase_2" style="font-family:arial;color:balck;font-size:16px;">You choose to find the volume of </p>
+<br/>
+<table border="1">
+    <tr>
+        <th>Object Volume</th>
+    </tr>
+    <tr>
+        <td>Shape</td>
+        <td>Radius</td>
+        <td>Height</td>
+        <td>Volume</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td id="2-2">(ft)</td>
+        <td id="2-3">(ft)</td>
+        <td id="2-4">(ft^3)</td>
+    </tr>
+    <tr>
+        <td id="3-1">object</td>
+        <td id="3-2">num1</td>
+        <td id="3-3">num2</td>
+        <td id="3-4">num3</td>
+    </tr>
+</table>
+</body>
+</html>
