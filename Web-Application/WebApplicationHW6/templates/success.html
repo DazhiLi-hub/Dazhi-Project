@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success Signed up</title>
+</head>
+<body bgcolor="lightgray">
+    <h1 align="center">Welcome to be Dazhi's guest</h1>
+    <p align="center">Hello {{new_guest['guest_name']}}!</p>
+    <p align="center">This is your invitation code, please remember that to find our schedule</p>
+    <h2 align="center">{{new_guest['invitation_num']}}</h2>
+    <p align="center">Wanna try it? Sign in here</p>
+    <div align="center">
+        <a href="/signin">
+            <button>Sign in</button>
+        </a>
+    </div>
+</body>
+</html>
