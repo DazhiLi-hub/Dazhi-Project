@@ -6,6 +6,8 @@ import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
 import time
+from collections import OrderedDict
+from torch.autograd import Variable
 
 # Preparing for Data
 print('==> Preparing data..')
@@ -26,6 +28,67 @@ transform_test = transforms.Compose([
 
 # classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
+################################################
+#Add one batch normalization layer
+class LeNet_batchnormalized(nn.Module):
+    def __init__(self):
+        super(LeNet_batchnormalized, self).__init__()
+        self.convnet=nn.Sequential(OrderedDict([
+                ('c1',nn.Conv2d(3,6,kernel_size=(5,5))),
+                ('relu1',nn.ReLU()),
+                ('s2',nn.MaxPool2d(kernel_size=(2,2),stride=2)),
+                ('c3',nn.Conv2d(6,16,kernel_size=(5,5))),
+                ('bn3',nn.BatchNorm2d(16)),
+                ('relu3',nn.ReLU()),
+                ('s4',nn.MaxPool2d(kernel_size=(2,2),stride=2)),
+                ('c5',nn.Conv2d(16,120,kernel_size=(5,5))),
+                ('relu5',nn.ReLU())
+        ]))
+    
+        self.fc=nn.Sequential(OrderedDict([
+                ('f6',nn.Linear(120,84)),
+                ('relu6',nn.ReLU()),
+                ('f7',nn.Linear(84,10)),
+                ('sig7',nn.LogSoftmax(dim=-1))
+        ]))
+    def forward(self, x):
+        #x.view(128,3,32,32)
+        x=self.convnet(x)
+        x=x.view(x.size()[0],-1)
+        out=self.fc(x)
+        return out
+###############################################
+        
+################################################
+#Add one dropout layer
+class LeNet_dropout(nn.Module):
+    def __init__(self):
+        super(LeNet_dropout, self).__init__()
+        self.convnet=nn.Sequential(OrderedDict([
+                ('c1',nn.Conv2d(3,6,kernel_size=(5,5))),
+                ('relu1',nn.ReLU()),
+                ('s2',nn.MaxPool2d(kernel_size=(2,2),stride=2)),
+                ('c3',nn.Conv2d(6,16,kernel_size=(5,5))),
+                ('relu3',nn.ReLU()),
+                ('s4',nn.MaxPool2d(kernel_size=(2,2),stride=2)),
+                ('c5',nn.Conv2d(16,120,kernel_size=(5,5))),
+                ('relu5',nn.ReLU())
+        ]))
+    
+        self.fc=nn.Sequential(OrderedDict([
+                ('f6',nn.Linear(120,84)),
+                ('drop6',nn.Dropout(0.5)),
+                ('relu6',nn.ReLU()),
+                ('f7',nn.Linear(84,10)),
+                ('sig7',nn.LogSoftmax(dim=-1))
+        ]))
+    def forward(self, x):
+        #x.view(128,3,32,32)
+        x=self.convnet(x)
+        x=x.view(x.size()[0],-1)
+        out=self.fc(x)
+        return out
+###############################################
 
 class LeNet(nn.Module):
     def __init__(self):
@@ -33,7 +96,23 @@ class LeNet(nn.Module):
         ############################
         #### Put your code here ####
         ############################
-
+        self.convnet=nn.Sequential(OrderedDict([
+                ('c1',nn.Conv2d(3,6,kernel_size=(5,5))),
+                ('relu1',nn.ReLU()),
+                ('s2',nn.MaxPool2d(kernel_size=(2,2),stride=2)),
+                ('c3',nn.Conv2d(6,16,kernel_size=(5,5))),
+                ('relu3',nn.ReLU()),
+                ('s4',nn.MaxPool2d(kernel_size=(2,2),stride=2)),
+                ('c5',nn.Conv2d(16,120,kernel_size=(5,5))),
+                ('relu5',nn.ReLU())
+        ]))
+    
+        self.fc=nn.Sequential(OrderedDict([
+                ('f6',nn.Linear(120,84)),
+                ('relu6',nn.ReLU()),
+                ('f7',nn.Linear(84,10)),
+                ('sig7',nn.LogSoftmax(dim=-1))
+        ]))
         ###########################
         #### End of your codes ####
         ###########################
@@ -42,7 +121,10 @@ class LeNet(nn.Module):
         ############################
         #### Put your code here ####
         ############################
-
+        #x.view(128,3,32,32)
+        x=self.convnet(x)
+        x=x.view(x.size()[0],-1)
+        out=self.fc(x)
         ###########################
         #### End of your codes ####
         ###########################
@@ -58,7 +140,12 @@ def train(model, device, train_loader, optimizer, epoch):
         ############################
         #### Put your code here ####
         ############################
-
+        data,target=Variable(data),Variable(target)
+        optimizer.zero_grad()
+        output=model(data)
+        loss=nn.CrossEntropyLoss()(output,target)
+        loss.backward()
+        optimizer.step()
         ###########################
         #### End of your codes ####
         ###########################
@@ -96,10 +183,11 @@ def main():
     save_model = False
     use_cuda = not no_cuda and torch.cuda.is_available()
     torch.manual_seed(100)
-    device = torch.device("cuda" if use_cuda else "cpu")
+    device = torch.device("cuda")
+    #device = torch.device("cuda" if use_cuda else "cpu")
 
     trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform_train)
-    train_loader = torch.utils.data.DataLoader(trainset, batch_size=128, shuffle=True)
+    train_loader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True)
     testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform_test)
     test_loader = torch.utils.data.DataLoader(testset, batch_size=100, shuffle=False)
 

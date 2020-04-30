@@ -41,7 +41,6 @@ def train(model,device,train_loader,optimizer,loss,epoch):
             y_onehot=(np.arange(10)==y_onehot[:,None]).astype(np.float32)
             target=torch.from_numpy(y_onehot)
             loss_fn=nn.MSELoss()
-        
         loss_=loss_fn(output,target)
         loss_.backward()
         optimizer.step()
