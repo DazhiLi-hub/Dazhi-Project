@@ -17,6 +17,7 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 import time
 from collections import OrderedDict
+import matplotlib.pyplot as plt
 
 class LeNet(nn.Module):
     def __init__(self):
@@ -185,7 +186,7 @@ def test(model, device, test_loader):
 
 # main function
 def main(model_kind):
-    device = torch.device("cpu")
+    device = torch.device("cuda")
     # load MNIST dataset
     batch_size = 128
     test_batch_size = 10000
@@ -231,10 +232,48 @@ if __name__ == '__main__':
     time_list=[]
     accuracy_list=[]
     detail={}
+    tick_list=["Classic","BN_nodrop","noBN_drop","BN_drop"]
     model_list=[LeNet(),LeNet_BN_noDropout(),LeNet_noBN_Dropout(),LeNet_BN_Dropout()]
+    epoch_list=[1,2,3,4,5,6,7,8,9,10]
     for model in model_list:
         temp_time,temp_accuracy,detail[model.name+'_time'],detail[model.name+'_accuracy']=main(model)
         time_list.append(temp_time)
         accuracy_list.append(temp_accuracy)
     print(time_list,accuracy_list)
     print(detail)
+    plt.figure(1)
+    ax1 = plt.subplot(3,2,1)
+    ax2 = plt.subplot(3, 2, 2)
+    ax3 = plt.subplot(3, 2, 3)
+    ax4 = plt.subplot(3, 2, 4)
+    ax5 = plt.subplot(3, 2, 5)
+    ax6 = plt.subplot(3, 2, 6)
+    plt.sca(ax1)
+    plt.bar(range(len(time_list)), time_list, color='red', tick_label=tick_list)
+    plt.ylim(90, 120)
+    ax1.set_title('Running Time')
+    ax1.set_ylabel('seconds')
+    plt.sca(ax2)
+    plt.bar(range(len(accuracy_list)), accuracy_list, color='blue', tick_label=tick_list)
+    plt.ylim(97, 100)
+    ax2.set_title('Last Accuracy')
+    ax2.set_ylabel('true/total')
+    plt.sca(ax3)
+    plt.plot(epoch_list, detail["LeNet_accuracy"], 'g--')
+    plt.ylim(70, 100)
+    ax3.set_title('LeNet5 Accuracy')
+    plt.sca(ax4)
+    plt.plot(epoch_list, detail["LeNet_BN_noDropout_accuracy"], 'g--')
+    plt.ylim(70, 100)
+    ax4.set_title('LeNet5 With BN layer Accuracy')
+    plt.sca(ax5)
+    plt.plot(epoch_list, detail["LeNet_noBN_Dropout_accuracy"], 'g--')
+    plt.ylim(70, 100)
+    ax5.set_title('LeNet5 With dropout Accuracy')
+    ax5.set_xlabel('Epochs')
+    plt.sca(ax6)
+    plt.plot(epoch_list, detail["LeNet_BN_Dropout_accuracy"], 'g--')
+    plt.ylim(70, 100)
+    ax6.set_title('LeNet5 With BN & dropout Accuracy')
+    ax6.set_xlabel('Epochs')
+    plt.show()
