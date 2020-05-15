@@ -186,7 +186,7 @@ def test(model, device, test_loader):
 
 # main function
 def main(model_kind):
-    device = torch.device("cuda")
+    device = torch.device("cpu")
     # load MNIST dataset
     batch_size = 128
     test_batch_size = 10000
