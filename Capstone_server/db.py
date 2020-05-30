@@ -1,6 +1,6 @@
 import pymongo
 import json
-
+'''
 dnn_result=[{'latitude':182,'longitude':8,'park_no':1,'status':True,'plate':'B2BJUY'},
             {'latitude':182,'longitude':12,'park_no':2,'status':False,'plate':''},
             {'latitude':182,'longitude':16,'park_no':3,'status':False,'plate':''},
@@ -15,7 +15,7 @@ updated_many=[{'latitude':182,'longitude':8,'park_no':1,'status':False,'plate':'
               {'latitude':182,'longitude':16,'park_no':3,'status':True,'plate':'JKL886'},]
 
 plate='D33LOP'
-
+'''
 class park_db:
     def __init__(self,host,port):
         self.host=host
@@ -74,9 +74,11 @@ class park_db:
 
 #testing example
 park=park_db('127.0.0.1',27017)
+'''
 park.all_init(dnn_result)
 park.update_one(updated_one)
 park.update_many(updated_many)
 park.find_all()
 park.find_empty()
 park.find_yours(plate)
+'''

@@ -1,18 +1,13 @@
 import db
 import time
+import json
 
 #listening example
-new_data_exist=False
-updated_one={'latitude':186,'longitude':12,'park_no':6,'status':False,'plate':''}
-def listener():
-    while(True):
-        if new_data_exist:
-            db.park.update_one(updated_one)
-        print('System updating .')
-        time.sleep(1)
-        print('System updating ..')
-        time.sleep(1)
-        print('System updating ...')
-        time.sleep(1)
 
-listener()
+data_path="/Users/dazhili/PycharmProjects/Mask_RCNN/parking_lot_status.json"
+while True:
+    with open(data_path) as f:
+        parking_status = json.load(f)
+        db.park.all_init(parking_status)
+        print("system updated")
+        time.sleep(300)

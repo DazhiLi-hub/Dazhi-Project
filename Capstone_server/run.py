@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,render_template
 import db
 from flask import jsonify
 
@@ -52,6 +52,18 @@ def update_send():
     results=get_diff(last_update,new_update)
     last_update=new_update
     return jsonify(results)
+
+@app.route('/camera1',methods=['GET'])
+def camera1():
+    return render_template('camera1.html')
+
+@app.route('/camera2',methods=['GET'])
+def camera2():
+    return render_template('camera2.html')
+
+@app.route('/camera3',methods=['GET'])
+def camera3():
+    return render_template('camera3.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
