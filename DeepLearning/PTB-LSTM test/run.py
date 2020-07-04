@@ -11,11 +11,11 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchtext import datasets
 
-def main(model_kind):
-    device = torch.device("gpu")
+def main():
+    device = torch.device("cuda")
     # load PTB dataset
     batch_size = 128
-    test_batch_size = 10000
+    test_batch_size = 42068
     train_loader = torch.utils.data.DataLoader(
         datasets.PennTreebank('./data', train=True, download=True,
         batch_size=batch_size, shuffle=True))
@@ -23,6 +23,7 @@ def main(model_kind):
         datasets.PennTreebank('./data', train=False,
         batch_size=test_batch_size, shuffle=True))
     # set optimizer
+    '''
     lr = 0.01
     model = model_kind.to(device)
     optimizer = optim.SGD(model.parameters(), lr=lr)
@@ -30,7 +31,7 @@ def main(model_kind):
     # Training settings
     epochs = 10
     loss = 'CE'
-    
+    '''
 
 if __name__=="__main__":
     main()
