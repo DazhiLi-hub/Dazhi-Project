@@ -9,29 +9,20 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import torchtext
 from torchtext import datasets
+from torchtext.data import Field
 
 def main():
-    device = torch.device("cuda")
+    device = torch.device("cpu")
     # load PTB dataset
     batch_size = 128
     test_batch_size = 42068
-    train_loader = torch.utils.data.DataLoader(
-        datasets.PennTreebank('./data', train=True, download=True,
-        batch_size=batch_size, shuffle=True))
-    test_loader = torch.utils.data.DataLoader(
-        datasets.PennTreebank('./data', train=False,
-        batch_size=test_batch_size, shuffle=True))
-    # set optimizer
-    '''
-    lr = 0.01
-    model = model_kind.to(device)
-    optimizer = optim.SGD(model.parameters(), lr=lr)
-    #time0 = time.time()
-    # Training settings
-    epochs = 10
-    loss = 'CE'
-    '''
+    TEXT=Field(sequential=True,eos_token=True,unk_token=True,pad_token=False)
+    train,valid,test = datasets.PennTreebank.splits(root='./data',text_field=TEXT, train='ptb.train.txt', validation='ptb.valid.txt', test='ptb.test.txt')
+    TEXT.build_vocab(train)
+    train_iter,valid_iter,test_iter=datasets.PennTreebank.iters(batch_size=1328,bptt_len=35,device=device,root='./data')
+    print(train_iter)
 
 if __name__=="__main__":
     main()
