@@ -31,7 +31,7 @@ class Corpus(object):
     def __init__(self):
         self.dictionary = Dictionary()  # 创建字典类对象
 
-    def get_data(self, path, batch_size=20):
+    def get_data(self, path, batch_size=1328):
         # 添加词到字典
         with open(path, 'r') as f:  # 读取文件
             tokens = 0
@@ -119,18 +119,21 @@ for epoch in range(num_epochs):
 
         # 前向运算
         states = detach(states)
+        optimizer.zero_grad()
         outputs, states = model(inputs, states)
         loss = criterion(outputs, targets.reshape(-1))
 
         # 反向传播与优化
         model.zero_grad()
-        loss.backward()
-        clip_grad_norm_(model.parameters(), 0.5)
+        loss.backward(retain_graph=True)
+        #clip_grad_norm_(model.parameters(), 0.5)
+        optimizer.step()
+
 
         step = (i + 1) // seq_length
-        if step % 100 == 0:
-            print('全量数据迭代轮次 [{}/{}], Step数[{}/{}], 损失Loss: {:.4f}, 困惑度/Perplexity: {:5.2f}'
-                  .format(epoch + 1, num_epochs, step, num_batches, loss.item(), np.exp(loss.item())))
+        #if step % 100 == 0:
+        print('全量数据迭代轮次 [{}/{}], Step数[{}/{}], 损失Loss: {:.4f}, 困惑度/Perplexity: {:5.2f}'
+            .format(epoch + 1, num_epochs, step, num_batches, loss.item(), np.exp(loss.item())))
 
 with torch.no_grad():
     with open('./data/ptb.test.txt', 'w') as f:
