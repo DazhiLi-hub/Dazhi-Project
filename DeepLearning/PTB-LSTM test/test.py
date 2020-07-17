@@ -57,7 +57,7 @@ class Corpus(object):
 device=torch.device('cpu')
 embed_size = 1500    # 词嵌入的维度
 hidden_size = 1500  # 使用RNN变种LSTM单元   LSTM的hidden size
-num_layers = 1      #循环单元/LSTM单元的层数
+num_layers = 2      #循环单元/LSTM单元的层数
 num_epochs = 5      # 迭代轮次
 num_samples = 1000  # 测试语言模型生成句子时的样本数
 batch_size = 1328     # 一批样本的数量
@@ -95,7 +95,6 @@ class RNNLM(nn.Module):  # RNNLM类继承nn.Module类
 
         return out, (h, c)
 
-
 model = RNNLM(vocab_size, embed_size, hidden_size, num_layers).to(device)
 criterion = nn.CrossEntropyLoss() #交叉熵损失
 #使用Adam优化方法 最小化损失 优化更新模型参数
@@ -132,9 +131,10 @@ for epoch in range(num_epochs):
 
         step = (i + 1) // seq_length
         #if step % 100 == 0:
-        print('全量数据迭代轮次 [{}/{}], Step数[{}/{}], 损失Loss: {:.4f}, 困惑度/Perplexity: {:5.2f}'
-            .format(epoch + 1, num_epochs, step, num_batches, loss.item(), np.exp(loss.item())))
-
+        print('Epochs [{}/{}], Batches[{}/{}], Loss: {:.4f}, Perplexity: {:5.2f}'
+            .format(epoch + 1, num_epochs, step+1, num_batches+1, loss.item(), np.exp(loss.item())))
+torch.save(model.state_dict(), "2LSMT.pt")
+'''
 with torch.no_grad():
     with open('./data/ptb.test.txt', 'w') as f:
         # 初始化为0
@@ -163,3 +163,11 @@ with torch.no_grad():
 
             if (i + 1) % 100 == 0:
                 print('生成了 [{}/{}] 个词，存储到 {}'.format(i + 1, num_samples, 'sample.txt'))
+'''
+def get_parameter_number(net):
+    total_num = sum(p.numel() for p in net.parameters())
+    trainable_num = sum(p.numel() for p in net.parameters() if p.requires_grad)
+    return {'Total parameter number': total_num, 'Trainable parameter number': trainable_num}
+
+para_num=get_parameter_number(model)
+print(para_num)
