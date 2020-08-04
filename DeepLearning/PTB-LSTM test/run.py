@@ -7,13 +7,13 @@ Created on Thu Jul  2 22:29:16 2020
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
 import torchtext
 from torchtext import datasets
 from torchtext.data import Field
-from torch.autograd import Variable as V
 from tqdm import tqdm
+import numpy as np
+from torch.nn.utils import clip_grad_norm_
+from torch.autograd import Variable as V
 
 class LSTM_model(nn.Module):
     def __init__(self,vocab_num,input_dim,hidden_dim,num_layers):
@@ -34,7 +34,7 @@ class LSTM_model(nn.Module):
 class RNNModel(nn.Module):
     def __init__(self, ntoken, ninp,
                  nhid, nlayers, bsz,
-                 dropout=0, tie_weights=True):
+                 dropout=0.5, tie_weights=True):
         super(RNNModel, self).__init__()
         self.nhid, self.nlayers, self.bsz = nhid, nlayers, bsz
         self.drop = nn.Dropout(dropout)
@@ -60,38 +60,11 @@ class RNNModel(nn.Module):
 
     def init_hidden(self, bsz):
         weight = next(self.parameters()).data
-        return (V(weight.new(self.nlayers, bsz, self.nhid).zero_().cpu()),
-                V(weight.new(self.nlayers, bsz, self.nhid).zero_()).cpu())
+        return (V(weight.new(self.nlayers, bsz, self.nhid).zero_().cuda()),
+                V(weight.new(self.nlayers, bsz, self.nhid).zero_()).cuda())
 
     def reset_history(self):
         self.hidden = tuple(V(v.data) for v in self.hidden)
-
-def train(model,device,train_loader,optimizer,epoch,loss_func):
-    model.train()
-    for batch in tqdm(train_loader):
-        text, target = batch.text,batch.target
-        optimizer.zero_grad()
-        output = model(text)
-        loss=loss_func(output,target)
-        loss.backward()
-        optimizer.step()
-
-def test(model,device,test_loader):
-    model.eval()
-    test_loss = 0
-    correct = 0
-    with torch.no_grad():
-        for data, target in test_loader:
-            data, target = data.to(device), target.to(device)
-            output = model(data)
-            test_loss += F.nll_loss(output, target, reduction='sum').item()  # sum up batch loss
-            pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
-            correct += pred.eq(target.view_as(pred)).sum().item()
-    test_loss /= len(test_loader.dataset)
-
-    print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
-        test_loss, correct, len(test_loader.dataset),
-        100. * correct / len(test_loader.dataset)))
 
 def get_parameter_number(net):
     total_num = sum(p.numel() for p in net.parameters())
@@ -100,12 +73,12 @@ def get_parameter_number(net):
 
 def main():
     #hyper parameters
-    device = torch.device("cpu")
+    device = torch.device("cuda")
     # load PTB dataset
-    batch_size = 1328
-    test_batch_size = 42068
-    learning_rate=0.01
-    epochs=5
+    batch_size = 20
+    learning_rate=0.001
+    epochs=39
+    torch.manual_seed(100)
     #preparing datasets
     TEXT=Field(sequential=True,eos_token=True,unk_token=True,pad_token=False)
     train,valid,test = datasets.PennTreebank.splits(root='./data',text_field=TEXT, train='ptb.train.txt', validation='ptb.valid.txt', test='ptb.test.txt')
@@ -118,24 +91,44 @@ def main():
         repeat=False)
     #train_iter,valid_iter,test_iter=datasets.PennTreebank.iters(batch_size=1328,bptt_len=35,device=device,root='./data')
     #apply models, loss functions and optimizer
-    model=LSTM_model(10002,1500,1500,2).to(device)
-    #model=RNNModel(10002,1500,1500,2,1328)
+    #model=LSTM_model(10002,1500,1500,2).to(device)
+    model=RNNModel(10002,1500,1500,2,20,dropout=0.5).to(device)
     print(get_parameter_number(model))
     loss_function=nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     #Do training
     for epoch in range(1,epochs+1):
+        if epoch > 6:
+            learning_rate=learning_rate/1.2
+            optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
         model.train()
         for batch in tqdm(train_iter):
-            #model.reset_history()
+            model.reset_history()
             text, target = batch.text, batch.target
             optimizer.zero_grad()
             output = model(text)
-            loss = loss_function(output, target.reshape(-1))
+            loss = loss_function(output.view(-1,10002), target.view(-1))
             loss.backward()
+            clip_grad_norm_(model.parameters(), 0.2)
             optimizer.step()
-        #train(model,device,train_iter,optimizer,epoch,loss_function)
-        test(model,device,test_iter)
+        #Do testing every epoch
+        model.eval()
+        perplexitis=[]
+        correct = 0
+        with torch.no_grad():
+            for tests in test_iter:
+                model.reset_history()
+                text, target = tests.text,tests.target
+                output = model(text)
+                #loss = loss_function(output, target.reshape(-1))  # sum up batch loss
+                loss = loss_function(output.view(-1, 10002), target.view(-1))
+                perplexity=np.exp(loss.item())
+                perplexitis.append(perplexity)
+        low=min(perplexitis)
+        high=max(perplexitis)
+
+        print('\nEpoch: {}/{}, Lowest perplexity: {:5.2f}, Highest perplexity:{:5.2f}\n'
+            .format(epoch, epochs, low, high))
     #calculating parameter number
     para_num = get_parameter_number(model)
     print(para_num)
