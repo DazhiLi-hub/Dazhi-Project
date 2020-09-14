@@ -46,7 +46,7 @@ class RNNModel(nn.Module):
         # therefore, we retain the hidden state across batches
 
     def init_weights(self):
-        initrange = 0.1
+        initrange = 0.04
         self.encoder.weight.data.uniform_(-initrange, initrange)
         self.decoder.bias.data.fill_(0)
         self.decoder.weight.data.uniform_(-initrange, initrange)
@@ -77,8 +77,8 @@ def main():
     # load PTB dataset
     batch_size = 20
     learning_rate=0.001
-    epochs=39
-    torch.manual_seed(100)
+    epochs=100
+    torch.manual_seed(141)
     #preparing datasets
     TEXT=Field(sequential=True,eos_token=True,unk_token=True,pad_token=False)
     train,valid,test = datasets.PennTreebank.splits(root='./data',text_field=TEXT, train='ptb.train.txt', validation='ptb.valid.txt', test='ptb.test.txt')
@@ -92,14 +92,15 @@ def main():
     #train_iter,valid_iter,test_iter=datasets.PennTreebank.iters(batch_size=1328,bptt_len=35,device=device,root='./data')
     #apply models, loss functions and optimizer
     #model=LSTM_model(10002,1500,1500,2).to(device)
-    model=RNNModel(10002,1500,1500,2,20,dropout=0.5).to(device)
+    model=RNNModel(10002,1500,1500,2,20,dropout=0.65).to(device)
+    #model.load_state_dict(torch.load("./Long_trained.pt"))
     print(get_parameter_number(model))
     loss_function=nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     #Do training
     for epoch in range(1,epochs+1):
-        if epoch > 6:
-            learning_rate=learning_rate/1.2
+        if epoch > 14:
+            learning_rate=learning_rate/1.15
             optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
         model.train()
         for batch in tqdm(train_iter):
@@ -109,12 +110,31 @@ def main():
             output = model(text)
             loss = loss_function(output.view(-1,10002), target.view(-1))
             loss.backward()
-            clip_grad_norm_(model.parameters(), 0.2)
+            clip_grad_norm_(model.parameters(), 10)
             optimizer.step()
+
+        #Test validation set
+        valid_sum_loss=0
+        valid_perplexities=[]
+        with torch.no_grad():
+            for valids in valid_iter:
+                model.reset_history()
+                text, target = valids.text,valids.target
+                output = model(text)
+                loss = loss_function(output.view(-1, 10002), target.view(-1))
+                valid_sum_loss+=loss.item()
+                perplexity=np.exp(loss.item())
+                valid_perplexities.append(perplexity)
+        valid_avg=np.exp(valid_sum_loss/len(valid_iter))
+
+        print('\nEpoch: {}/{}, Validation set average perplexity:{:5.2f}\n'
+            .format(epoch, epochs, valid_avg))
+
         #Do testing every epoch
         model.eval()
         perplexitis=[]
-        correct = 0
+        sum_loss=0
+        #correct = 0
         with torch.no_grad():
             for tests in test_iter:
                 model.reset_history()
@@ -122,14 +142,17 @@ def main():
                 output = model(text)
                 #loss = loss_function(output, target.reshape(-1))  # sum up batch loss
                 loss = loss_function(output.view(-1, 10002), target.view(-1))
+                sum_loss+=loss.item()
                 perplexity=np.exp(loss.item())
                 perplexitis.append(perplexity)
         low=min(perplexitis)
         high=max(perplexitis)
+        avg=np.exp(sum_loss/len(test_iter))
 
-        print('\nEpoch: {}/{}, Lowest perplexity: {:5.2f}, Highest perplexity:{:5.2f}\n'
-            .format(epoch, epochs, low, high))
+        print('\nEpoch: {}/{}, Lowest perplexity: {:5.2f}, Highest perplexity:{:5.2f}, Test set average perplexity:{:5.2f}\n'
+            .format(epoch, epochs, low, high, avg))
     #calculating parameter number
+    torch.save(model.state_dict(), "./Long_trained.pt")
     para_num = get_parameter_number(model)
     print(para_num)
 
