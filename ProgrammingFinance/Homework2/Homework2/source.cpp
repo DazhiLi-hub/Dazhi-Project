@@ -35,7 +35,7 @@ int main(void)
 		x = rand();
 		y = rand();
 		file << x << "," << y << "\n";
-		int distance = sqrt(pow(x, 2) + pow(y, 2));
+		double distance = sqrt(pow(x, 2) + pow(y, 2));
 		//Judge if the point is in the circle
 		if (distance <= radius)
 		{
@@ -45,14 +45,4 @@ int main(void)
 	double pi = 4 * (double(shaded_count)/ double(random_num));
 	cout << "The estimated pi is: " << pi << endl;
 	return 0;
-	/*
-	ofstream file;
-	//opens the file myfile.txt
-	file.open("myfile.txt");
-	//for loop to write the values to the file
-	for (int i = 0;i < 100;i++) {
-		file << i << "," << i + 5 << "\n";
-	}
-	cout << "Printed numbers to file myfile.txt\n";
-	*/
 }
