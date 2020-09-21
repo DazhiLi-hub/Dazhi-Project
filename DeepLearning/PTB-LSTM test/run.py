@@ -14,6 +14,14 @@ from tqdm import tqdm
 import numpy as np
 from torch.nn.utils import clip_grad_norm_
 from torch.autograd import Variable as V
+import matplotlib.pyplot as plt
+
+def plot_figure(x_axis,y_axis):
+    plt.title("Testing Status")
+    plt.plot(x_axis, y_axis, color="r", linestyle="-", linewidth=1.0)
+    plt.xlabel("Testing epochs")
+    plt.ylabel("Perplexity")
+    plt.show()
 
 class LSTM_model(nn.Module):
     def __init__(self,vocab_num,input_dim,hidden_dim,num_layers):
@@ -46,7 +54,7 @@ class RNNModel(nn.Module):
         # therefore, we retain the hidden state across batches
 
     def init_weights(self):
-        initrange = 0.04
+        initrange = 0.1
         self.encoder.weight.data.uniform_(-initrange, initrange)
         self.decoder.bias.data.fill_(0)
         self.decoder.weight.data.uniform_(-initrange, initrange)
@@ -76,9 +84,9 @@ def main():
     device = torch.device("cuda")
     # load PTB dataset
     batch_size = 20
-    learning_rate=0.001
-    epochs=100
-    torch.manual_seed(141)
+    learning_rate=15
+    epochs=40
+    #torch.manual_seed(141)
     #preparing datasets
     TEXT=Field(sequential=True,eos_token=True,unk_token=True,pad_token=False)
     train,valid,test = datasets.PennTreebank.splits(root='./data',text_field=TEXT, train='ptb.train.txt', validation='ptb.valid.txt', test='ptb.test.txt')
@@ -98,6 +106,8 @@ def main():
     loss_function=nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     #Do training
+    Epoch_idxs=[]
+    testing_status = []
     for epoch in range(1,epochs+1):
         if epoch > 14:
             learning_rate=learning_rate/1.15
@@ -105,17 +115,22 @@ def main():
         model.train()
         for batch in tqdm(train_iter):
             model.reset_history()
+            model.zero_grad()
             text, target = batch.text, batch.target
             optimizer.zero_grad()
             output = model(text)
-            loss = loss_function(output.view(-1,10002), target.view(-1))
+            loss = loss_function(output.view(-1,10002), torch.squeeze(target.view(-1)))
             loss.backward()
-            clip_grad_norm_(model.parameters(), 10)
-            optimizer.step()
+            clip_grad_norm_(model.parameters(), 0.25)
+            for p in model.parameters():
+                p.data.add_(-learning_rate, p.grad.data)
+            #optimizer.step()
 
         #Test validation set
+        model.eval()
         valid_sum_loss=0
         valid_perplexities=[]
+
         with torch.no_grad():
             for valids in valid_iter:
                 model.reset_history()
@@ -134,27 +149,29 @@ def main():
         model.eval()
         perplexitis=[]
         sum_loss=0
-        #correct = 0
         with torch.no_grad():
             for tests in test_iter:
                 model.reset_history()
                 text, target = tests.text,tests.target
                 output = model(text)
                 #loss = loss_function(output, target.reshape(-1))  # sum up batch loss
-                loss = loss_function(output.view(-1, 10002), target.view(-1))
+                loss = loss_function(output.view(-1, 10002), torch.squeeze(target.view(-1)))
                 sum_loss+=loss.item()
                 perplexity=np.exp(loss.item())
                 perplexitis.append(perplexity)
         low=min(perplexitis)
         high=max(perplexitis)
         avg=np.exp(sum_loss/len(test_iter))
+        testing_status.append(avg)
 
         print('\nEpoch: {}/{}, Lowest perplexity: {:5.2f}, Highest perplexity:{:5.2f}, Test set average perplexity:{:5.2f}\n'
             .format(epoch, epochs, low, high, avg))
+        Epoch_idxs.append(epoch)
     #calculating parameter number
     torch.save(model.state_dict(), "./Long_trained.pt")
     para_num = get_parameter_number(model)
     print(para_num)
+    plot_figure(Epoch_idxs,testing_status)
 
 if __name__=="__main__":
     main()
