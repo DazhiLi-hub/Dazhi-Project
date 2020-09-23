@@ -1,0 +1,11 @@
+﻿  matrix.cpp
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(309,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(310,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(311,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(312,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(313,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(314,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(315,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(316,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Homework3-matrix\matrix.cpp(317,42): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  Homework3-matrix.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\Homework3-matrix\Debug\Homework3-matrix.exe

@@ -84,7 +84,7 @@ def main():
     device = torch.device("cuda")
     # load PTB dataset
     batch_size = 20
-    learning_rate=15
+    learning_rate=20
     epochs=40
     #torch.manual_seed(141)
     #preparing datasets
