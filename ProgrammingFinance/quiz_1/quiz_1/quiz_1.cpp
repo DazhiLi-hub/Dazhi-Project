@@ -21,6 +21,11 @@ int main(int argc, char*argv[])
     {
         stringstream ss(argv[1]);
         ss >> Num_plays;
+        if (Num_plays <= 0)
+        {
+            cerr << "Please input a positive integer" << endl;
+            return -1;
+        }
     }
     else
     {
