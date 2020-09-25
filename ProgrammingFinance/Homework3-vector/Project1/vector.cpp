@@ -30,13 +30,13 @@ public:
 	int row;
 	int column;
 	bool exist;
-	TD_Vector(vector<vector<int>> vv, int rows, int columns, int exists);
+	TD_Vector(vector<vector<int> > vv, int rows, int columns, int exists);
 	int get_Transpose(TD_Vector A);
 	int get_Determinant(TD_Vector A);
 	int get_Inverse(TD_Vector A);
 };
 
-TD_Vector::TD_Vector(vector<vector<int>> vv, int rows, int columns, int exists)
+TD_Vector::TD_Vector(vector<vector<int> > vv, int rows, int columns, int exists)
 {
 	value = vv;
 	row = rows;
@@ -48,7 +48,7 @@ TD_Vector Gen_random_vector()
 {
 	int row, column;
 	//Create a failed generated TD_vector for wrong user's input
-	vector<vector<int>> failed(0, vector <int>(0));
+	vector<vector<int> > failed(0, vector <int>(0));
 	TD_Vector failed_one(failed, 0, 0, false);
 	//Ask user to input and judge if the TD_vector is smaller than 10 x 10
 	cout << "Please enter the number of row: ";
@@ -65,7 +65,7 @@ TD_Vector Gen_random_vector()
 		cerr << "Please enter a 2D vector no larger than 10 x 10" << endl;
 		return failed_one;
 	}
-	vector<vector<int>> vv(row, vector<int>(column));
+	vector<vector<int> > vv(row, vector<int>(column));
 	cout << "Please enter the values of elements:(Use space as interval, enter to continue)" << endl;
 	//Creating a string for user to input
 	string tmp = "\n";
@@ -179,7 +179,7 @@ int Multiplication(TD_Vector A, TD_Vector B)
 		return -1;
 	}
 	//Do multiplication
-	vector<vector<int>> vv(A.row, vector<int>(B.column));
+	vector<vector<int> > vv(A.row, vector<int>(B.column));
 	TD_Vector C(vv, A.row, B.column, true);
 	for (int i = 0;i < C.row;i++)
 	{
@@ -207,7 +207,7 @@ int Multiplication(TD_Vector A, TD_Vector B)
 
 int TD_Vector::get_Transpose(TD_Vector A)
 {
-	vector<vector<int>> vv(A.column, vector<int>(A.row));
+	vector<vector<int> > vv(A.column, vector<int>(A.row));
 	TD_Vector B(vv, A.column, A.row, true);
 	//Do transpose
 	for (int i = 0;i < B.row;i++)
