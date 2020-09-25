@@ -7,7 +7,7 @@ using namespace std;
 
 enum Status { CONTINUE, WON, LOST };
 unsigned int rollDice();
-unsigned int GetInt();
+int GetInt();
 Status PlayGame();
 
 int main(int argc, char*argv[])
@@ -30,6 +30,10 @@ int main(int argc, char*argv[])
     else
     {
         Num_plays = GetInt();
+    }
+    if (Num_plays == -1)
+    {
+        return -1;
     }
     for (int i = 0; i < Num_plays;i++)
     {
@@ -56,9 +60,9 @@ unsigned int rollDice()
     return sum;
 }
 
-unsigned int GetInt()
+int GetInt()
 {
-    unsigned int num_plays;
+    int num_plays;
     cout << "Please specify the number of plays you want: ";
     while (cin >> num_plays)
     {
@@ -66,6 +70,7 @@ unsigned int GetInt()
             break;
         else
             cerr << "Please input a positive integer" << endl;
+        return -1;
     }
     return num_plays;
 }
