@@ -1,0 +1,47 @@
+﻿  vector.cpp
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(269,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(270,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(271,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(272,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(273,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(274,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(275,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(276,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+D:\Dazhi-Project\ProgrammingFinance\Project1\Project1\vector.cpp(277,42): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+  Project1.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\Project1\Debug\Project1.exe
