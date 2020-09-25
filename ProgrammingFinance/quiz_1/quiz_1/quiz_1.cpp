@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
+#include<sstream>
 
 using namespace std;
 
@@ -18,7 +19,8 @@ int main(int argc, char*argv[])
 	Status gameStatus = CONTINUE; // can contain CONTINUE, WON or LOST
     if (argc == 2)
     {
-        Num_plays = int(argv[1]);
+        stringstream ss(argv[1]);
+        ss >> Num_plays;
     }
     else
     {
@@ -70,13 +72,15 @@ Status PlayGame()
     unsigned int sumOfDice = rollDice();
     switch (sumOfDice)
     {
-    case 7://win with 7 on first roll
-    case 11://win with 11 on first roll
+    //WINS
+    case 7:
+    case 11:
         Inside_Status = WON;
         break;
-    case 2://lose with 2 on first roll
-    case 3://lose with 3 on first roll
-    case 12://lose with 12 on first roll
+    //LOSES
+    case 2:
+    case 3:
+    case 12:
         Inside_Status = LOST;
         break;
     default://did not win or lose, so remember point
@@ -85,18 +89,17 @@ Status PlayGame()
         cout << "Point is:" << myPoint << endl;
         break;//option at end of switch
     }//end Switch
-    while (CONTINUE == Inside_Status) // not WON or LOST
+    while (CONTINUE == Inside_Status) 
     {
-        sumOfDice = rollDice(); // roll dice again
+        sumOfDice = rollDice(); 
         // determine game status
-        if (sumOfDice == myPoint)//win by making point
+        if (sumOfDice == myPoint)
             Inside_Status = WON;
         else
-            if (sumOfDice == 7)//lose by rolling 7 before point
+            if (sumOfDice == 7)
                 Inside_Status = LOST;
-    }//end while
+    }
 
-    //Display won or lost message
     if (WON == Inside_Status)
     {
         cout << "Player wins" << endl;
