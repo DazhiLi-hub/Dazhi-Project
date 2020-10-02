@@ -17,8 +17,29 @@ int DebugPrint::getDebugLevel()
 
 void DebugPrint::print(int dL, std::string statement)
 {
-	setDebugLevel(dL);
-	cout << statement << endl;
+	if (dL < debugLevel) {
+		return;
+	}
+	if (dL == 1) {
+		std::cout << GREEN << "DEBUG: " << statement << RESET << std::endl;
+	}
+	else if (dL == 2) {
+		std::cout << BOLDCYAN << "INFO: " << statement << RESET << std::endl;
+	}
+	else if (dL == 3) {
+		std::cout << YELLOW << "WARNING: " << statement << RESET << std::endl;
+	}
+	else if (dL == 4) {
+		std::cout << MAGENTA << "ERROR: " << statement << RESET << std::endl;
+	}
+	else if (dL == 5) {
+		std::cout << BOLDRED << "FATAL: " << statement << RESET << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	else {
+		std::cout << "Sepecified debug level: " << dL << " is not defined in debugPrint function\n";
+		exit(EXIT_FAILURE);
+	}
 }
 
 int RandGen::getRange()
