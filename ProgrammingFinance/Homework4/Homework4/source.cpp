@@ -213,7 +213,7 @@ int Delete_at(BookInfo* books, int total_books)
             (books + i)->title = (books + i + 1)->title;
             (books + i)->author = (books + i + 1)->author;
         }
-        (books + total_books - 1)->isbnNum = NULL;
+        (books + total_books - 1)->isbnNum = 0;
         (books + total_books - 1)->title = "";
         (books + total_books - 1)->author = "";
         return 0;
@@ -242,7 +242,7 @@ int Delete_by_ISBN(BookInfo* books, int total_books)
             (books + i)->title = (books + i + 1)->title;
             (books + i)->author = (books + i + 1)->author;
         }
-        (books + total_books - 1)->isbnNum = NULL;
+        (books + total_books - 1)->isbnNum = 0;
         (books + total_books - 1)->title = "";
         (books + total_books - 1)->author = "";
         return 0;
