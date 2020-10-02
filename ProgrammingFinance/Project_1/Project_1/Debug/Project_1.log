@@ -1,3 +1,5 @@
 ﻿  mainPgm.cpp
 D:\Dazhi-Project\ProgrammingFinance\Project_1\Project_1\mainPgm.cpp(24,15): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  randGen.cpp
+  正在生成代码...
   Project_1.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\Project_1\Debug\Project_1.exe
