@@ -1,0 +1,3 @@
+﻿  source.cpp
+D:\Dazhi-Project\ProgrammingFinance\Homework4\Homework4\source.cpp(255): warning C4715: “Delete_by_ISBN”: 不是所有的控件路径都返回值
+  Homework4.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\Homework4\x64\Debug\Homework4.exe
