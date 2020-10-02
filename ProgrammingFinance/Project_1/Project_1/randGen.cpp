@@ -1,9 +1,6 @@
-#include<math.h>
 #include "randGen.h"
 
 using namespace std;
-
-int debugLevel = 1;
 
 void DebugPrint::setDebugLevel(int dl)
 {
@@ -42,6 +39,12 @@ void DebugPrint::print(int dL, std::string statement)
 	}
 }
 
+RandGen::RandGen(int rng , int ctr )
+{
+	range = rng;
+	cntr = ctr;
+}
+
 int RandGen::getRange()
 {
 	return range;
@@ -71,7 +74,7 @@ double RandGen::distance()
 	double distance = sqrt(pow(point[0], point[1]));
 	return distance;
 }
-
+/*
 void FindPi::setEstmResults(double estmResults)
 {
 	estimatedResults = estmResults;
@@ -99,3 +102,4 @@ double FindPi::runEstimation(int itr, int randLimit)
 	double pi = 4 * (count / double(rndPoint.readCntr()));
 	return pi;
 }
+*/

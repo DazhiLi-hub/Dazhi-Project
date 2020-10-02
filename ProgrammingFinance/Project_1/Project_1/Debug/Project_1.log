@@ -1,5 +1,5 @@
-﻿mainPgm.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall RandGen::RandGen(int,int)" (??0RandGen@@QAE@HH@Z)，该符号在函数 _main 中被引用
-randGen.obj : error LNK2001: 无法解析的外部符号 "public: __thiscall RandGen::RandGen(int,int)" (??0RandGen@@QAE@HH@Z)
-mainPgm.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall FindPi::FindPi(void)" (??0FindPi@@QAE@XZ)，该符号在函数 _main 中被引用
-randGen.obj : error LNK2001: 无法解析的外部符号 "private: static int DebugPrint::debugLevel" (?debugLevel@DebugPrint@@0HA)
-D:\Dazhi-Project\ProgrammingFinance\Project_1\Debug\Project_1.exe : fatal error LNK1120: 3 个无法解析的外部命令
+﻿  mainPgm.cpp
+D:\Dazhi-Project\ProgrammingFinance\Project_1\Project_1\mainPgm.cpp(10,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\Dazhi-Project\ProgrammingFinance\Project_1\Project_1\mainPgm.cpp(15,24): error C3867: “RandGen::getRange”: 非标准语法；请使用 "&" 来创建指向成员的指针
+  randGen.cpp
+  正在生成代码...
