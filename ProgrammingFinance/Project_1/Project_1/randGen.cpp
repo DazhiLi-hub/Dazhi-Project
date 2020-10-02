@@ -2,6 +2,8 @@
 
 using namespace std;
 
+int DebugPrint::debugLevel = 1;
+
 void DebugPrint::setDebugLevel(int dl)
 {
 	debugLevel = dl;
@@ -66,15 +68,21 @@ int* RandGen::genPoint()
 	int* pointPtr = point;
 	point[0] = rand() % range;
 	point[1] = rand() % range;
+	cntr++;
 	return pointPtr;
 }
 
 double RandGen::distance()
 {
-	double distance = sqrt(pow(point[0], point[1]));
+	double distance = sqrt(pow(point[0], 2)+pow(point[1],2));
 	return distance;
 }
-/*
+
+FindPi::FindPi()
+{
+
+}
+
 void FindPi::setEstmResults(double estmResults)
 {
 	estimatedResults = estmResults;
@@ -89,7 +97,7 @@ double FindPi::runEstimation(int itr, int randLimit)
 {
 	double count=0;
 	double distance;
-	RandGen rndPoint(randLimit,itr);
+	RandGen rndPoint(randLimit,0);
 	for (int i = 0;i < itr;i++)
 	{
 		rndPoint.genPoint();
@@ -102,4 +110,3 @@ double FindPi::runEstimation(int itr, int randLimit)
 	double pi = 4 * (count / double(rndPoint.readCntr()));
 	return pi;
 }
-*/

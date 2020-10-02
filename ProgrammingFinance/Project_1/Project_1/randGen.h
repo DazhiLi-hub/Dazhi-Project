@@ -21,7 +21,6 @@
 #include <limits>
 #include <sstream>
 #include <stdlib.h>
-#include <math.h>
 
 // macro or symbolic literals (constants)
 #define RESET    "\033[0m"
@@ -43,7 +42,7 @@
 #define BOLDWHITE    "\033[1m\033[37m"
 
 class DebugPrint {
-    int debugLevel;
+    static int debugLevel;
 public:
     void setDebugLevel(int dl);
     int getDebugLevel();
@@ -62,8 +61,7 @@ public:
     int* genPoint();
     double distance();
 };
-#endif
-/*
+
 class FindPi {
     double estimatedResults;
 public:
@@ -72,4 +70,5 @@ public:
     double getEstmResults();
     double runEstimation(int itr, int randLimit);
 };
-*/
+
+#endif
