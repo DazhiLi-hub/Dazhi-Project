@@ -1,0 +1,5 @@
+﻿mainPgm.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall RandGen::RandGen(int,int)" (??0RandGen@@QAE@HH@Z)，该符号在函数 _main 中被引用
+randGen.obj : error LNK2001: 无法解析的外部符号 "public: __thiscall RandGen::RandGen(int,int)" (??0RandGen@@QAE@HH@Z)
+mainPgm.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall FindPi::FindPi(void)" (??0FindPi@@QAE@XZ)，该符号在函数 _main 中被引用
+randGen.obj : error LNK2001: 无法解析的外部符号 "private: static int DebugPrint::debugLevel" (?debugLevel@DebugPrint@@0HA)
+D:\Dazhi-Project\ProgrammingFinance\Project_1\Debug\Project_1.exe : fatal error LNK1120: 3 个无法解析的外部命令
