@@ -1,0 +1,3 @@
+﻿  source.cpp
+D:\Dazhi-Project\ProgrammingFinance\Homework5-2\source.cpp(67): warning C4715: “puzzle_jump”: 不是所有的控件路径都返回值
+  Homework5-2.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\Homework5-2\Debug\Homework5-2.exe
