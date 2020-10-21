@@ -1,0 +1,2 @@
+D:\Dazhi-Project\ProgrammingFinance\test\Debug\test.exe
+D:\Dazhi-Project\ProgrammingFinance\test\Debug\test.pdb
