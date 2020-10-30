@@ -22,28 +22,33 @@ int main(void)
 		switch (choice)
 		{
 		case '0':
+		{
 			cout << "System exit" << endl;
 			break;
+		}
 		case '1':
-			Circle true_circle;
+		{
+			Circle my_circle;
 			cout << "Please enter the center of the circle (x-coordinate and then y-coordinate):" << endl;
 			cin >> x >> y;
-			true_circle.setCenter(x, y);
+			my_circle.setCenter(x, y);
 			cout << "Please enter the radius of the circle:" << endl;
 			double r;
 			cin >> r;
 			if (r > 0)
 			{
-				true_circle.setRadius(r);
-				true_circle.getArea();
-				cout << true_circle;
+				my_circle.setRadius(r);
+				my_circle.getArea();
+				cout << my_circle;
 			}
 			else
 			{
 				cerr << "Invalid input, please try again" << endl;
 			}
 			break;
+		}
 		case '2':
+		{
 			Triangle true_triangle;
 			cout << "Please enter the center of the triangle (x-coordinate and then y-coordinate):" << endl;
 			cin >> x >> y;
@@ -62,7 +67,9 @@ int main(void)
 				cerr << "Invalid input, please try again" << endl;
 			}
 			break;
+		}
 		case '3':
+		{
 			Sphere true_sphere;
 			double r_sphere;
 			cout << "Please enter the center of the sphere (x-coordinate, y-coordinate, then z-coordinate):" << endl;
@@ -82,7 +89,9 @@ int main(void)
 				cerr << "Invalid input, please try again" << endl;
 			}
 			break;
+		}
 		case '4':
+		{
 			Regular_Tetrahedron true_tetrahedron;
 			double l_tetrahedron;
 			cout << "Please enter the center of the regular tetrahedron (x-coordinate, y-coordinate, then z-coordinate):" << endl;
@@ -102,9 +111,12 @@ int main(void)
 				cerr << "Invalid input, please try again" << endl;
 			}
 			break;
+		}
 		default:
+		{
 			cerr << "Invalid input,please try again" << endl;
 			break;
+		}
 		}
 	}
 	return 0;
