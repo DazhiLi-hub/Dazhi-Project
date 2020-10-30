@@ -1,5 +1,5 @@
 #include "All.h"
-
+#include<math.h>
 void Two_Dimensional_Shape :: setCenter(double x, double y)
 {
 	center_x = x;
