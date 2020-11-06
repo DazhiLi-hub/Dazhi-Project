@@ -3,6 +3,7 @@
 #include "OvernightPackage.h"
 #include<iostream>
 #include<vector>
+#include<string>
 using namespace std;
 
 void Display_Package_Info(Package* Pk_ptr)
@@ -108,6 +109,7 @@ int main()
 		cout << "Please add one kind of package, use 0 for finish" << endl;
 		int package_type=1,count=0,type1_cnt=0,type2_cnt=0,type3_cnt=0;
 		double weight;
+		string str = "\n";
 		string sname, saddress, scity, sstate, szip,
 			rname, raddress, rcity, rstate, rzip;
 		vector<Package*> packages;
@@ -131,25 +133,26 @@ int main()
 				continue;
 			}
 			cout << "Sender name: ";
-			cin >> sname;
+			getline(cin, str);
+			getline(cin,sname);
 			cout << "Sender address: ";
-			cin >> saddress;
+			getline(cin, saddress);
 			cout << "Sender city:";
-			cin >> scity;
+			getline(cin, scity);
 			cout << "Sender state:";
-			cin >> sstate;
+			getline(cin, sstate);
 			cout << "Sender zip:";
-			cin >> szip;
+			getline(cin, szip);
 			cout << "Recipient name: ";
-			cin >> rname;
+			getline(cin, rname);
 			cout << "Recipient address: ";
-			cin >> raddress;
+			getline(cin, raddress);
 			cout << "Recipient city:";
-			cin >> rcity;
+			getline(cin, rcity);
 			cout << "Recipient state:";
-			cin >> rstate;
+			getline(cin, rstate);
 			cout << "Recipient zip:";
-			cin >> rzip;
+			getline(cin, rzip);
 			cout << "The weight of package:";
 			cin >> weight;
 			while (weight <= 0)
