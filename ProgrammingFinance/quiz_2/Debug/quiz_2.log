@@ -1,0 +1,43 @@
+﻿  3_mainPgm.cpp
+D:\Dazhi-Project\ProgrammingFinance\quiz_2\3_mainPgm.cpp(9,10): fatal error C1083: 无法打开包括文件: “Employee.h”: No such file or directory
+  BasePlusCommissionEmployee.cpp
+G:\Class09\3_abstractBaseClass\Employee.h(41,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\Employee.h(41,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\Employee.h(41,34): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(29,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(29,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(29,43): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\BasePlusCommissionEmployee.h(26,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\BasePlusCommissionEmployee.h(26,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\BasePlusCommissionEmployee.h(26,43): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\BasePlusCommissionEmployee.cpp(52,36): error C2039: "whoami": 不是 "BasePlusCommissionEmployee" 的成员
+G:\Class09\3_abstractBaseClass\BasePlusCommissionEmployee.h(10): message : 参见“BasePlusCommissionEmployee”的声明
+G:\Class09\3_abstractBaseClass\BasePlusCommissionEmployee.cpp(53,1): error C2270: “whoami”: 非成员函数上不允许修饰符
+  CommissionEmployee.cpp
+G:\Class09\3_abstractBaseClass\Employee.h(41,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\Employee.h(41,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\Employee.h(41,34): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(29,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(29,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(29,43): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\CommissionEmployee.cpp(56,29): error C2039: "whoami": 不是 "CommissionEmployee" 的成员
+G:\Class09\3_abstractBaseClass\CommissionEmployee.h(11): message : 参见“CommissionEmployee”的声明
+G:\Class09\3_abstractBaseClass\CommissionEmployee.cpp(57,1): error C2270: “whoami”: 非成员函数上不允许修饰符
+  Employee.cpp
+G:\Class09\3_abstractBaseClass\Employee.h(41,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\Employee.h(41,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\Employee.h(41,34): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\Employee.cpp(37,18): error C2039: "whoami": 不是 "Employee" 的成员
+G:\Class09\3_abstractBaseClass\Employee.h(22): message : 参见“Employee”的声明
+G:\Class09\3_abstractBaseClass\Employee.cpp(38,1): error C2270: “whoami”: 非成员函数上不允许修饰符
+  SalariedEmployee.cpp
+G:\Class09\3_abstractBaseClass\Employee.h(41,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\Employee.h(41,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\Employee.h(41,34): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\SalariedEmployee.h(25,26): error C3646: “whoami”: 未知重写说明符
+G:\Class09\3_abstractBaseClass\SalariedEmployee.h(25,27): error C2059: 语法错误:“)”
+G:\Class09\3_abstractBaseClass\SalariedEmployee.h(25,43): error C2238: 意外的标记位于“;”之前
+G:\Class09\3_abstractBaseClass\SalariedEmployee.cpp(39,26): error C2039: "whoami": 不是 "SalariedEmployee" 的成员
+G:\Class09\3_abstractBaseClass\SalariedEmployee.h(14): message : 参见“SalariedEmployee”的声明
+G:\Class09\3_abstractBaseClass\SalariedEmployee.cpp(40,1): error C2270: “whoami”: 非成员函数上不允许修饰符
+  正在生成代码...

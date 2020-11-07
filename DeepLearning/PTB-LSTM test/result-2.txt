@@ -1,285 +1,283 @@
 D:\Anaconda3\python.exe "D:/Dazhi-Project/DeepLearning/PTB-LSTM test/run.py"
-{'Total parameter number': 66040002, 'Trainable parameter number': 66040002}
-100%|██████████| 1328/1328 [01:48<00:00, 12.27it/s]
+  0%|          | 0/1328 [00:00<?, ?it/s]{'Total parameter number': 66040002, 'Trainable parameter number': 66040002}
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 1/40, Validation set average perplexity:232.03
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 1/40, Lowest perplexity: 153.85, Highest perplexity:325.68, Test set average perplexity:227.42
-
-100%|██████████| 1328/1328 [01:50<00:00, 12.05it/s]
-
-Epoch: 2/40, Validation set average perplexity:169.32
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 2/40, Lowest perplexity: 110.23, Highest perplexity:248.06, Test set average perplexity:164.98
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.12it/s]
-
-Epoch: 3/40, Validation set average perplexity:142.42
+Epoch: 1/40, Validation set average perplexity:206.52
 
 
-Epoch: 3/40, Lowest perplexity: 93.19, Highest perplexity:211.58, Test set average perplexity:139.23
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.14it/s]
-
-Epoch: 4/40, Validation set average perplexity:126.11
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 4/40, Lowest perplexity: 83.22, Highest perplexity:183.95, Test set average perplexity:123.31
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.15it/s]
-
-Epoch: 5/40, Validation set average perplexity:115.08
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 5/40, Lowest perplexity: 75.04, Highest perplexity:167.73, Test set average perplexity:112.81
-
-100%|██████████| 1328/1328 [01:50<00:00, 12.05it/s]
-
-Epoch: 6/40, Validation set average perplexity:108.17
-
-
-Epoch: 6/40, Lowest perplexity: 69.80, Highest perplexity:157.65, Test set average perplexity:105.66
-
-100%|██████████| 1328/1328 [01:50<00:00, 12.07it/s]
-
-Epoch: 7/40, Validation set average perplexity:102.26
-
-
-Epoch: 7/40, Lowest perplexity: 67.91, Highest perplexity:151.48, Test set average perplexity:100.21
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.07it/s]
-
-Epoch: 8/40, Validation set average perplexity:98.38
-
-
-Epoch: 8/40, Lowest perplexity: 63.83, Highest perplexity:144.88, Test set average perplexity:96.37
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.10it/s]
-
-Epoch: 9/40, Validation set average perplexity:95.48
-
-
-Epoch: 9/40, Lowest perplexity: 62.09, Highest perplexity:140.75, Test set average perplexity:93.19
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.12it/s]
-
-Epoch: 10/40, Validation set average perplexity:92.99
-
-
-Epoch: 10/40, Lowest perplexity: 59.24, Highest perplexity:136.51, Test set average perplexity:90.80
+Epoch: 1/40, Lowest perplexity: 141.05, Highest perplexity:293.32, Test set average perplexity:202.72
 
 100%|██████████| 1328/1328 [01:49<00:00, 12.17it/s]
 
-Epoch: 11/40, Validation set average perplexity:91.16
+Epoch: 2/40, Validation set average perplexity:155.60
 
 
-Epoch: 11/40, Lowest perplexity: 59.66, Highest perplexity:136.00, Test set average perplexity:88.95
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.19it/s]
-
-Epoch: 12/40, Validation set average perplexity:90.23
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 12/40, Lowest perplexity: 58.66, Highest perplexity:134.22, Test set average perplexity:87.72
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.15it/s]
-
-Epoch: 13/40, Validation set average perplexity:89.08
-
-
-Epoch: 13/40, Lowest perplexity: 57.18, Highest perplexity:133.03, Test set average perplexity:86.36
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.19it/s]
-
-Epoch: 14/40, Validation set average perplexity:88.38
-
-
-Epoch: 14/40, Lowest perplexity: 58.73, Highest perplexity:132.50, Test set average perplexity:85.93
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.09it/s]
-
-Epoch: 15/40, Validation set average perplexity:86.98
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 15/40, Lowest perplexity: 56.62, Highest perplexity:131.16, Test set average perplexity:84.73
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.14it/s]
-
-Epoch: 16/40, Validation set average perplexity:86.26
-
-
-Epoch: 16/40, Lowest perplexity: 57.21, Highest perplexity:129.44, Test set average perplexity:83.75
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.15it/s]
-
-Epoch: 17/40, Validation set average perplexity:86.35
-
-
-Epoch: 17/40, Lowest perplexity: 57.72, Highest perplexity:131.35, Test set average perplexity:83.98
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
-
-Epoch: 18/40, Validation set average perplexity:86.36
-
-
-Epoch: 18/40, Lowest perplexity: 56.20, Highest perplexity:135.01, Test set average perplexity:83.87
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
-
-Epoch: 19/40, Validation set average perplexity:86.51
-
-
-Epoch: 19/40, Lowest perplexity: 56.90, Highest perplexity:136.59, Test set average perplexity:83.85
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
-
-Epoch: 20/40, Validation set average perplexity:86.52
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 20/40, Lowest perplexity: 56.70, Highest perplexity:133.42, Test set average perplexity:83.85
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.13it/s]
-
-Epoch: 21/40, Validation set average perplexity:87.18
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 21/40, Lowest perplexity: 56.70, Highest perplexity:135.81, Test set average perplexity:84.35
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.13it/s]
-
-Epoch: 22/40, Validation set average perplexity:87.36
-
-
-Epoch: 22/40, Lowest perplexity: 56.53, Highest perplexity:142.05, Test set average perplexity:84.37
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.15it/s]
-
-Epoch: 23/40, Validation set average perplexity:88.45
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 23/40, Lowest perplexity: 56.62, Highest perplexity:142.08, Test set average perplexity:85.08
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.11it/s]
-
-Epoch: 24/40, Validation set average perplexity:88.42
-
-
-Epoch: 24/40, Lowest perplexity: 57.27, Highest perplexity:141.52, Test set average perplexity:85.08
-
-100%|██████████| 1328/1328 [01:49<00:00, 12.11it/s]
-
-Epoch: 25/40, Validation set average perplexity:89.15
-
-
-Epoch: 25/40, Lowest perplexity: 57.16, Highest perplexity:143.48, Test set average perplexity:85.75
+Epoch: 2/40, Lowest perplexity: 106.66, Highest perplexity:230.64, Test set average perplexity:152.71
 
 100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
 
-Epoch: 26/40, Validation set average perplexity:89.52
+Epoch: 3/40, Validation set average perplexity:132.82
 
   0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 26/40, Lowest perplexity: 57.39, Highest perplexity:143.70, Test set average perplexity:86.08
+Epoch: 3/40, Lowest perplexity: 89.02, Highest perplexity:194.41, Test set average perplexity:130.20
 
-100%|██████████| 1328/1328 [01:49<00:00, 12.17it/s]
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
 
-Epoch: 27/40, Validation set average perplexity:89.41
+Epoch: 4/40, Validation set average perplexity:120.22
 
   0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 27/40, Lowest perplexity: 56.59, Highest perplexity:143.38, Test set average perplexity:85.81
+Epoch: 4/40, Lowest perplexity: 80.13, Highest perplexity:174.26, Test set average perplexity:117.84
 
-100%|██████████| 1328/1328 [01:49<00:00, 12.11it/s]
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
 
-Epoch: 28/40, Validation set average perplexity:89.85
+Epoch: 5/40, Validation set average perplexity:112.52
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 5/40, Lowest perplexity: 73.07, Highest perplexity:159.74, Test set average perplexity:109.81
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 6/40, Validation set average perplexity:107.28
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 6/40, Lowest perplexity: 70.37, Highest perplexity:155.81, Test set average perplexity:104.53
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 7/40, Validation set average perplexity:105.22
 
 
-Epoch: 28/40, Lowest perplexity: 56.90, Highest perplexity:143.14, Test set average perplexity:86.07
+Epoch: 7/40, Lowest perplexity: 67.75, Highest perplexity:151.43, Test set average perplexity:102.21
 
-100%|██████████| 1328/1328 [01:50<00:00, 11.98it/s]
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
 
-Epoch: 29/40, Validation set average perplexity:89.87
+Epoch: 8/40, Validation set average perplexity:101.96
 
 
-Epoch: 29/40, Lowest perplexity: 57.12, Highest perplexity:143.44, Test set average perplexity:86.08
+Epoch: 8/40, Lowest perplexity: 66.41, Highest perplexity:147.39, Test set average perplexity:98.87
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.12it/s]
+
+Epoch: 9/40, Validation set average perplexity:98.44
+
+
+Epoch: 9/40, Lowest perplexity: 64.73, Highest perplexity:140.95, Test set average perplexity:95.70
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 10/40, Validation set average perplexity:97.45
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 10/40, Lowest perplexity: 61.95, Highest perplexity:138.02, Test set average perplexity:94.51
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 11/40, Validation set average perplexity:95.01
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 11/40, Lowest perplexity: 62.01, Highest perplexity:137.51, Test set average perplexity:92.20
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.15it/s]
+
+Epoch: 12/40, Validation set average perplexity:94.28
+
+
+Epoch: 12/40, Lowest perplexity: 61.20, Highest perplexity:136.42, Test set average perplexity:91.26
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 13/40, Validation set average perplexity:92.98
+
+
+Epoch: 13/40, Lowest perplexity: 60.45, Highest perplexity:133.16, Test set average perplexity:89.74
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 14/40, Validation set average perplexity:91.33
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 14/40, Lowest perplexity: 57.60, Highest perplexity:132.76, Test set average perplexity:88.23
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.15it/s]
+
+Epoch: 15/40, Validation set average perplexity:87.79
+
+
+Epoch: 15/40, Lowest perplexity: 55.41, Highest perplexity:129.68, Test set average perplexity:85.30
+
+100%|██████████| 1328/1328 [01:49<00:00, 12.16it/s]
+
+Epoch: 16/40, Validation set average perplexity:86.54
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 16/40, Lowest perplexity: 53.85, Highest perplexity:126.20, Test set average perplexity:83.43
 
 100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 30/40, Validation set average perplexity:90.01
+Epoch: 17/40, Validation set average perplexity:85.20
 
 
-Epoch: 30/40, Lowest perplexity: 57.10, Highest perplexity:145.08, Test set average perplexity:86.22
+Epoch: 17/40, Lowest perplexity: 54.35, Highest perplexity:123.20, Test set average perplexity:81.93
 
-100%|██████████| 1328/1328 [01:49<00:00, 12.18it/s]
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 31/40, Validation set average perplexity:90.12
-
-  0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 31/40, Lowest perplexity: 56.85, Highest perplexity:145.02, Test set average perplexity:86.23
-
-100%|██████████| 1328/1328 [01:51<00:00, 11.86it/s]
-
-Epoch: 32/40, Validation set average perplexity:90.36
+Epoch: 18/40, Validation set average perplexity:84.11
 
 
-Epoch: 32/40, Lowest perplexity: 56.78, Highest perplexity:145.11, Test set average perplexity:86.41
+Epoch: 18/40, Lowest perplexity: 54.79, Highest perplexity:125.14, Test set average perplexity:80.97
 
-100%|██████████| 1328/1328 [01:48<00:00, 12.22it/s]
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 33/40, Validation set average perplexity:90.46
-
-
-Epoch: 33/40, Lowest perplexity: 57.26, Highest perplexity:144.58, Test set average perplexity:86.62
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.23it/s]
-
-Epoch: 34/40, Validation set average perplexity:90.63
-
-
-Epoch: 34/40, Lowest perplexity: 57.37, Highest perplexity:146.03, Test set average perplexity:86.72
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.23it/s]
-
-Epoch: 35/40, Validation set average perplexity:90.37
+Epoch: 19/40, Validation set average perplexity:83.29
 
   0%|          | 0/1328 [00:00<?, ?it/s]
-Epoch: 35/40, Lowest perplexity: 57.10, Highest perplexity:144.84, Test set average perplexity:86.55
+Epoch: 19/40, Lowest perplexity: 53.16, Highest perplexity:124.33, Test set average perplexity:79.86
 
-100%|██████████| 1328/1328 [01:48<00:00, 12.22it/s]
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 36/40, Validation set average perplexity:90.51
-
-
-Epoch: 36/40, Lowest perplexity: 57.14, Highest perplexity:145.91, Test set average perplexity:86.73
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.22it/s]
-
-Epoch: 37/40, Validation set average perplexity:90.67
+Epoch: 20/40, Validation set average perplexity:82.82
 
 
-Epoch: 37/40, Lowest perplexity: 57.10, Highest perplexity:146.25, Test set average perplexity:86.84
+Epoch: 20/40, Lowest perplexity: 52.96, Highest perplexity:123.97, Test set average perplexity:79.45
 
-100%|██████████| 1328/1328 [01:48<00:00, 12.23it/s]
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 38/40, Validation set average perplexity:90.80
-
-
-Epoch: 38/40, Lowest perplexity: 57.16, Highest perplexity:145.81, Test set average perplexity:86.95
-
-100%|██████████| 1328/1328 [01:48<00:00, 12.23it/s]
-
-Epoch: 39/40, Validation set average perplexity:90.81
+Epoch: 21/40, Validation set average perplexity:82.49
 
 
-Epoch: 39/40, Lowest perplexity: 57.22, Highest perplexity:145.89, Test set average perplexity:86.95
+Epoch: 21/40, Lowest perplexity: 52.22, Highest perplexity:124.69, Test set average perplexity:78.99
 
-100%|██████████| 1328/1328 [01:48<00:00, 12.23it/s]
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
 
-Epoch: 40/40, Validation set average perplexity:90.86
+Epoch: 22/40, Validation set average perplexity:82.22
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 22/40, Lowest perplexity: 52.35, Highest perplexity:125.69, Test set average perplexity:78.98
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 23/40, Validation set average perplexity:82.26
 
 
-Epoch: 40/40, Lowest perplexity: 57.13, Highest perplexity:146.87, Test set average perplexity:86.99
+Epoch: 23/40, Lowest perplexity: 51.79, Highest perplexity:125.71, Test set average perplexity:79.02
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
+
+Epoch: 24/40, Validation set average perplexity:82.12
+
+
+Epoch: 24/40, Lowest perplexity: 52.06, Highest perplexity:126.12, Test set average perplexity:78.88
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
+
+Epoch: 25/40, Validation set average perplexity:82.18
+
+
+Epoch: 25/40, Lowest perplexity: 51.57, Highest perplexity:128.55, Test set average perplexity:78.66
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
+
+Epoch: 26/40, Validation set average perplexity:81.69
+
+
+Epoch: 26/40, Lowest perplexity: 51.90, Highest perplexity:126.51, Test set average perplexity:78.40
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 27/40, Validation set average perplexity:82.24
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 27/40, Lowest perplexity: 52.00, Highest perplexity:128.03, Test set average perplexity:78.63
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 28/40, Validation set average perplexity:82.07
+
+
+Epoch: 28/40, Lowest perplexity: 51.77, Highest perplexity:126.90, Test set average perplexity:78.50
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 29/40, Validation set average perplexity:82.18
+
+
+Epoch: 29/40, Lowest perplexity: 51.74, Highest perplexity:128.13, Test set average perplexity:78.65
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 30/40, Validation set average perplexity:81.96
+
+
+Epoch: 30/40, Lowest perplexity: 51.77, Highest perplexity:127.29, Test set average perplexity:78.40
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.19it/s]
+
+Epoch: 31/40, Validation set average perplexity:82.37
+
+
+Epoch: 31/40, Lowest perplexity: 52.23, Highest perplexity:129.07, Test set average perplexity:78.63
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 32/40, Validation set average perplexity:82.17
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 32/40, Lowest perplexity: 51.64, Highest perplexity:128.26, Test set average perplexity:78.40
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 33/40, Validation set average perplexity:82.22
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 33/40, Lowest perplexity: 51.44, Highest perplexity:130.26, Test set average perplexity:78.44
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 34/40, Validation set average perplexity:82.20
+
+
+Epoch: 34/40, Lowest perplexity: 51.37, Highest perplexity:128.53, Test set average perplexity:78.29
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 35/40, Validation set average perplexity:82.25
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 35/40, Lowest perplexity: 51.39, Highest perplexity:128.25, Test set average perplexity:78.37
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
+
+Epoch: 36/40, Validation set average perplexity:82.30
+
+
+Epoch: 36/40, Lowest perplexity: 51.36, Highest perplexity:128.34, Test set average perplexity:78.41
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 37/40, Validation set average perplexity:82.29
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 37/40, Lowest perplexity: 51.78, Highest perplexity:128.50, Test set average perplexity:78.43
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 38/40, Validation set average perplexity:82.34
+
+  0%|          | 0/1328 [00:00<?, ?it/s]
+Epoch: 38/40, Lowest perplexity: 51.56, Highest perplexity:129.33, Test set average perplexity:78.45
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.20it/s]
+
+Epoch: 39/40, Validation set average perplexity:82.29
+
+
+Epoch: 39/40, Lowest perplexity: 51.53, Highest perplexity:129.14, Test set average perplexity:78.43
+
+100%|██████████| 1328/1328 [01:48<00:00, 12.21it/s]
+
+Epoch: 40/40, Validation set average perplexity:82.35
+
+
+Epoch: 40/40, Lowest perplexity: 51.57, Highest perplexity:128.71, Test set average perplexity:78.39
 
 {'Total parameter number': 66040002, 'Trainable parameter number': 66040002}
-
-Process finished with exit code 0
