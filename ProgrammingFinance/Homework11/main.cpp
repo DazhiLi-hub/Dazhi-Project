@@ -53,7 +53,7 @@ int main() {
         cin >> preference;
         if (preference == 'Y' || preference == 'y')
         {
-            op_result = yourlist.Set_TestSet();
+            op_result = yourlist.Set_TestSet_string();
             if (op_result != 0)
             {
                 cerr << "System Error, Exit" << endl;
@@ -109,7 +109,7 @@ int main() {
         cin >> preference;
         if (preference == 'Y' || preference == 'y')
         {
-            op_result = yourlist.Set_TestSet();
+            op_result = yourlist.Set_TestSet_int();
             if (op_result != 0)
             {
                 cerr << "System Error, Exit" << endl;

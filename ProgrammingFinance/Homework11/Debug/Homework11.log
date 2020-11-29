@@ -1,4 +1,4 @@
 ﻿  main.cpp
-D:\Dazhi-Project\ProgrammingFinance\Homework11\Booklist.h(269): warning C4715: “Booklist<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::Delete_by_ISBN”: 不是所有的控件路径都返回值
-D:\Dazhi-Project\ProgrammingFinance\Homework11\Booklist.h(269): warning C4715: “Booklist<int>::Delete_by_ISBN”: 不是所有的控件路径都返回值
+D:\Dazhi-Project\ProgrammingFinance\Homework11\Booklist.h(270): warning C4715: “Booklist<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::Delete_by_ISBN”: 不是所有的控件路径都返回值
+D:\Dazhi-Project\ProgrammingFinance\Homework11\Booklist.h(270): warning C4715: “Booklist<int>::Delete_by_ISBN”: 不是所有的控件路径都返回值
   Homework11.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\Homework11\Debug\Homework11.exe

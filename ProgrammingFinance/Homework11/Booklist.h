@@ -24,7 +24,8 @@ public:
     int Delete_by_ISBN();
     int Selection_sort();
     int Bubble_sort();
-    int Set_TestSet();
+    int Set_TestSet_int();
+    int Set_TestSet_string();
     int Get_totalBooks() const;
     bool is_existed(T) const;
 };
@@ -313,7 +314,8 @@ int Booklist<T>::Bubble_sort()
     return 0;
 }
 
-int Booklist<int>::Set_TestSet()
+template <class T>
+int Booklist<T>::Set_TestSet_int()
 {
     list[0] = 47625;
     list[1] = 95624;
@@ -324,7 +326,8 @@ int Booklist<int>::Set_TestSet()
     return 0;
 }
 
-int Booklist<string>::Set_TestSet()
+template <class T>
+int Booklist<T>::Set_TestSet_string()
 {
     list[0] = "POLAND";
     list[1] = "SPRING";
