@@ -15,6 +15,7 @@ import numpy as np
 from torch.nn.utils import clip_grad_norm_
 from torch.autograd import Variable as V
 import matplotlib.pyplot as plt
+import TTLSTMFull
 
 def plot_figure(x_axis,y_axis):
     plt.title("Testing Status")
@@ -47,7 +48,13 @@ class RNNModel(nn.Module):
         self.nhid, self.nlayers, self.bsz = nhid, nlayers, bsz
         self.drop = nn.Dropout(dropout)
         self.encoder = nn.Embedding(ntoken, ninp)
-        self.rnn = nn.LSTM(ninp, nhid, nlayers, dropout=dropout)
+        #self.rnn = nn.LSTM(ninp, nhid, nlayers, dropout=dropout)
+        self.concat_tt_shape=[2,4,25,15]
+        self.output_tt_shape=[2,10,5,15]
+        self.tt_1_ranks=[1,2,2,2,1]
+        self.tt_2_ranks=[1,1,1,1,1]
+        self.tt_1=TTLSTMFull.TTLSTMFullCell(self.concat_tt_shape,self.output_tt_shape,self.tt_1_ranks)
+        self.tt_2=TTLSTMFull.TTLSTMFullCell(self.concat_tt_shape,self.output_tt_shape,self.tt_2_ranks)
         self.decoder = nn.Linear(nhid, ntoken)
         self.init_weights()
         self.hidden = self.init_hidden(bsz)  # the input is a batched consecutive corpus
@@ -61,7 +68,9 @@ class RNNModel(nn.Module):
 
     def forward(self, input):
         emb = self.drop(self.encoder(input))
-        output, self.hidden = self.rnn(emb, self.hidden)
+        #output, self.hidden = self.rnn(emb, self.hidden)
+        hidden = self.tt_1(emb)
+        output =self.tt_2(hidden)
         output = self.drop(output)
         decoded = self.decoder(output.view(output.size(0) * output.size(1), output.size(2)))
         return decoded.view(output.size(0), output.size(1), decoded.size(1))
@@ -73,6 +82,8 @@ class RNNModel(nn.Module):
 
     def reset_history(self):
         self.hidden = tuple(V(v.data) for v in self.hidden)
+        self.tt_1.reset_parameters()
+        self.tt_2.reset_parameters()
 
 def get_parameter_number(net):
     total_num = sum(p.numel() for p in net.parameters())
