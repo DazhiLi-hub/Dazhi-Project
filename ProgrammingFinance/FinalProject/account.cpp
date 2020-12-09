@@ -53,6 +53,7 @@ int Stock_Portfolio_Account::initself()
 {
 	cash_balance = 10000;
 	portfolio_value = 0;
+	portfolio.clear_ALL_nodes();
 	return 0;
 }
 
@@ -86,14 +87,49 @@ bool Stock_Portfolio_Account::is_in_portfolio(string A)
 	return portfolio.is_exsisting(A);
 }
 
-int Stock_Portfolio_Account::check_shares(string)
+int Stock_Portfolio_Account::check_shares(string A)
 {
+	return portfolio.check_shares(A);
+}
 
+float Stock_Portfolio_Account::check_price(string A)
+{
+	return portfolio.check_price(A);
+}
+
+void Stock_Portfolio_Account::Sell_Shares(string stock_symble, int num_shares)
+{
+	cash_balance += portfolio.check_price(stock_symble) * num_shares;
+	if (num_shares == portfolio.check_shares(stock_symble))
+	{
+		portfolio.Delete_one(stock_symble);
+	}
+	else
+	{
+		portfolio.Decrease_one(stock_symble,num_shares);
+	}
 }
 
 
 
-int BankAccount::get_balance(Stock_Portfolio_Account A)
+float BankAccount::get_balance(Stock_Portfolio_Account& A)
 {
 	return A.cash_balance;
+}
+
+float BankAccount::get_balance()
+{
+	return 0;
+}
+
+void BankAccount::deposit_money(float money,Stock_Portfolio_Account& mystocks)
+{
+	mystocks.cash_balance += money;
+	return;
+}
+
+void BankAccount::withdraw_money(float money, Stock_Portfolio_Account& mystocks)
+{
+	mystocks.cash_balance -= money;
+	return;
 }

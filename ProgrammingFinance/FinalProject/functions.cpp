@@ -5,6 +5,7 @@ int clear_ALL()
 	remove("Stock_Portfolio_Account.txt");
 	remove("Stock_Transaction_History.txt");
 	remove("Stock_Portfolio_Info.txt");
+	remove("Bank_Transaction_History.txt");
 	return 0;
 }
 
@@ -93,5 +94,116 @@ void write_history(string event_type, string company_symbol, int num_shares,
 		<< num_shares * price_per_shares << "\t"
 		<< time_now << endl;
 	history.close();
+	return;
+}
+
+void read_transaction_history()
+{
+	ifstream history("Stock_Transaction_History.txt");
+	if (!history)
+	{
+		cout << "No history found" << endl;
+		return;
+	}
+	else
+	{
+		string event_type;
+		string company_symbol;
+		int num_shares;
+		float price_per_share;
+		float total_value;
+		string week;
+		string month;
+		int date;
+		string time;
+		int year;
+		cout << left << setw(9) << "Event"
+			<< left << setw(18) << "Company-Symbol"
+			<< left << setw(10) << "Number"
+			<< left << setw(18) << "PricePerShare"
+			<< left << setw(15) << "Total Value"
+			<< left << setw(18) << "Date"
+			<< left << setw(14) << "Time" << endl;
+		while (history.good() && !history.eof())
+		{
+			history >> event_type;
+			history >> company_symbol;
+			history >> num_shares;
+			history >> price_per_share;
+			history >> total_value;
+			history >> week;
+			history >> month;
+			history >> date;
+			history >> time;
+			history >> year;
+			if (history.peek() == EOF)
+				break;
+			cout << left << setw(9) << event_type
+				<< left << setw(18) << company_symbol
+				<< left << setw(10) << num_shares
+				<< "$" << left << setw(17) << price_per_share
+				<< "$" << left << setw(14) << total_value
+				<< left << setw(3) << month << " " << date << "," << year << "\t"
+				<< left << setw(13) << time << endl;
+		}
+	}
+	return;
+}
+
+void write_bank_history(string event_type, float amount, float cash_balance)
+{
+	ofstream bank;
+	time_t now = time(0);
+	tm timeinfo;
+	char time_now[32];
+	localtime_s(&timeinfo, &now);
+	asctime_s(time_now, &timeinfo);
+	bank.open("Bank_Transaction_History.txt", ios::app);
+	bank << event_type << "\t" << amount << "\t"
+		<< cash_balance << "\t" << time_now << endl;
+	bank.close();
+	return;
+}
+
+void read_bank_history()
+{
+	ifstream history("Bank_Transaction_History.txt");
+	if (!history)
+	{
+		cout << "No history found" << endl;
+		return;
+	}
+	else
+	{
+		string event_type;
+		float amount;
+		float banlance;
+		string week;
+		string month;
+		int date;
+		string time;
+		int year;
+		cout << left << setw(15) << "Event"
+			<< left << setw(11) << "Amount"
+			<< left << setw(15) << "Date"
+			<< left << setw(15) << "Balance" << endl;
+		while (history.good() && !history.eof())
+		{
+			history >> event_type;
+			history >> amount;
+			history >> banlance;
+			history >> week;
+			history >> month;
+			history >> date;
+			history >> time;
+			history >> year;
+			if (history.peek() == EOF)
+				break;
+			cout << left << setw(15) << event_type
+				<<"$" << left << setw(10) <<amount
+				<< left << setw(3) << month << " " << date << "," << year << "\t"
+				<< "$"<< left << setw(15) << banlance << endl;
+		}
+	}
 	return;
 }

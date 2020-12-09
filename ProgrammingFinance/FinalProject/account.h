@@ -27,11 +27,16 @@ public:
 	void print_portfolio();
 	bool is_in_portfolio(string);
 	int check_shares(string);
+	float check_price(string);
+	void Sell_Shares(string, int);
 };
 
 class BankAccount : public Account
 {
 public:
-	int get_balance(Stock_Portfolio_Account);
+	float get_balance() override;
+	float get_balance(Stock_Portfolio_Account&);
+	void deposit_money(float,Stock_Portfolio_Account&);
+	void withdraw_money(float, Stock_Portfolio_Account&);
 };
 #endif

@@ -29,4 +29,10 @@ const stock Find_Stock_Symbol(vector<stock>& A, string searched_one);
 
 void write_history(string event_type, string company_symbol, int num_shares,
 	float price_per_shares);
+
+void read_transaction_history();
+
+void write_bank_history(string event_type, float amount, float cash_balance);
+
+void read_bank_history();
 #endif

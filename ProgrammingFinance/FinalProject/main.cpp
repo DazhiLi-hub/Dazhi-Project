@@ -9,6 +9,7 @@ int main(void)
 	vector<stock> stock_day_1 = Stock_files_import("Result_1.txt");
 	vector<stock> stock_day_2 = Stock_files_import("Result_2.txt");
 	Stock_Portfolio_Account my_stocks;
+	BankAccount my_bank;
 	//BankAccount my_bank;
 	/*Account management system
 	Ask user if they want to start a new account 
@@ -98,6 +99,7 @@ int main(void)
 		{
 		case '1':
 		{
+			inner_choice = 'a';
 			while (inner_choice!='7')
 			{
 				Display_Portfolio_menu();
@@ -205,6 +207,8 @@ int main(void)
 							else if (random_num == 2)
 								my_stocks.update_portfolio(stock_day_2);
 							write_history("Buy", searched_one.name, num_shares, searched_one.price_per_share);
+							write_bank_history("BuyShares", num_shares* searched_one.price_per_share
+								, my_bank.get_balance(my_stocks));
 							cout << "You have purchased " << num_shares
 								<< " shares of " << searched_one.name <<
 								" at $" << searched_one.price_per_share <<
@@ -228,6 +232,10 @@ int main(void)
 					getline(cin, stock_symbol);
 					getline(cin, stock_symbol);
 					random_num = random_gen();
+					if (random_num == 1)
+						my_stocks.update_portfolio(stock_day_1);
+					else if (random_num == 2)
+						my_stocks.update_portfolio(stock_day_2);
 					if (my_stocks.is_in_portfolio(stock_symbol))
 					{
 						while (num_shares <= 0)
@@ -238,7 +246,45 @@ int main(void)
 							{
 								cout << "Please enter a positive value and try again" << endl;
 							}
-							if(num_shares>my_stocks.check_shares(stock_symbol))
+							if (num_shares > my_stocks.check_shares(stock_symbol))
+							{
+								cout << "Your does not have so much shares to sell"
+									<< ", please try again with a smaller number"
+									<< endl;
+								num_shares = 0;
+							}
+						}
+						while (minimum_per_share <= 0)
+						{
+							cout << "Please enter the minimum amount you are willing to sell per share: ";
+							cin >> minimum_per_share;
+							if (minimum_per_share <= 0)
+							{
+								cout << "Please enter a positive value and try again" << endl;
+							}
+						}
+						if (minimum_per_share > my_stocks.check_price(stock_symbol))
+						{
+							cout << "Selling failed !!!" << endl
+								<< "Your willing price is higher than the market price" << endl;
+						}
+						else
+						{
+							float selling_price = my_stocks.check_price(stock_symbol);
+							my_stocks.Sell_Shares(stock_symbol,num_shares);
+							if (random_num == 1)
+								my_stocks.update_portfolio(stock_day_1);
+							if (random_num == 2)
+								my_stocks.update_portfolio(stock_day_2);
+							write_history("Sell",stock_symbol,num_shares,
+								selling_price);
+							write_bank_history("SellShares", num_shares* selling_price
+								, my_bank.get_balance(my_stocks));
+							cout << "You have selled " << num_shares
+								<< " shares of " << stock_symbol
+								<< " at $" << selling_price
+								<< " each for a total of $"
+								<< num_shares * selling_price << endl;
 						}
 					}
 					else
@@ -250,10 +296,12 @@ int main(void)
 				}
 				case '5':
 				{
+					cout << "Developing" << endl;
 					break;
 				}
 				case '6':
 				{
+					read_transaction_history();
 					break;
 				}
 				case '7':
@@ -271,6 +319,78 @@ int main(void)
 		}
 		case '2':
 		{
+			inner_choice = 'a';
+			while (inner_choice != '5')
+			{
+				Display_Bank_menu();
+				cin >> inner_choice;
+				switch (inner_choice)
+				{
+				case '1':
+				{
+					cout << "Your bank cash balance is: $"
+						<< my_bank.get_balance(my_stocks) << endl;
+					break;
+				}
+				case '2':
+				{
+					float deposit_money = 0;
+					cout << "Please enter an amount you wish to deposit: ";
+					cin >> deposit_money;
+					if (deposit_money <= 0)
+					{
+						cout << "Please deposit a positive value of money" << endl;
+					}
+					else
+					{
+						my_bank.deposit_money(deposit_money, my_stocks);
+						write_bank_history("Deposit", deposit_money,
+							my_bank.get_balance(my_stocks));
+						cout << "You have deposited $" << deposit_money
+							<< " in your account now." << endl;
+					}
+					break;
+				}
+				case '3':
+				{
+					float withdraw_money = 0;
+					cout << "Please enter an amount you wish to withdraw: ";
+					cin >> withdraw_money;
+					if (withdraw_money <= 0)
+					{
+						cout << "Please withdraw a positive value of money" << endl;
+					}
+					else if (withdraw_money>my_bank.get_balance(my_stocks))
+					{
+						cout << "You do not have such amount of money in your account"
+							<< ", please check your account balance" << endl;
+					}
+					else
+					{
+						my_bank.withdraw_money(withdraw_money, my_stocks);
+						write_bank_history("Withdraw", withdraw_money,
+							my_bank.get_balance(my_stocks));
+						cout << "You have withdrawed $" << withdraw_money
+							<< " from your account now." << endl;
+					}
+					break;
+				}
+				case '4':
+				{
+					read_bank_history();
+					break;
+				}
+				case '5':
+				{
+					break;
+				}
+				default:
+				{
+					cout << "Invalid input, please try again" << endl;
+					break;
+				}
+				}
+			}
 			break;
 		}
 		case '0':

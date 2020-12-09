@@ -35,5 +35,10 @@ public:
 	float cal_portfolio_value();
 	void print_list();
 	void load_portfolio();
+	int check_shares(string);
+	float check_price(string);
+	void Delete_one(string);
+	void Decrease_one(string, int);
+	void clear_ALL_nodes();
 };
 #endif

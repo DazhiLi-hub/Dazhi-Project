@@ -1,0 +1,14 @@
+BuyShares	2849.82	7150.18	Tue Dec  8 19:56:23 2020
+
+Deposit	3000	10150.2	Tue Dec  8 19:56:39 2020
+
+BuyShares	8886	1264.18	Tue Dec  8 19:57:08 2020
+
+SellShares	6124	7388.18	Tue Dec  8 19:58:21 2020
+
+Withdraw	100	7288.18	Tue Dec  8 19:59:40 2020
+
+BuyShares	3870	3418.18	Tue Dec  8 20:08:37 2020
+
+SellShares	2780	6198.18	Tue Dec  8 20:09:49 2020
+

@@ -1,2 +1,6 @@
-﻿  main.cpp
+﻿  Doubly_Linked_List.cpp
+D:\Dazhi-Project\ProgrammingFinance\FinalProject\Doubly_Linked_List.cpp(163,20): warning C4018: “<”: 有符号/无符号不匹配
+  main.cpp
+  正在生成代码...
+D:\Dazhi-Project\ProgrammingFinance\FinalProject\Doubly_Linked_List.cpp(247): warning C4715: “Doubly_linked_list::check_price”: 不是所有的控件路径都返回值
   FinalProject.vcxproj -> D:\Dazhi-Project\ProgrammingFinance\FinalProject\Debug\FinalProject.exe

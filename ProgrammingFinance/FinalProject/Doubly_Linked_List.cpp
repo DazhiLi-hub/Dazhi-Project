@@ -79,11 +79,22 @@ void Doubly_linked_list::decreasing_sort()
 						else
 						{
 							q->previous->next = q->next;
+							myTail = q->previous;
 						}
-						q->previous = NULL;
-						q->next = myHead;
-						myHead->previous = q;
-						myHead = q;
+						if (cnt == 0)
+						{
+							q->previous = p->previous;
+							q->next = p;
+							p->previous = q;
+							myHead = q;
+						}
+						else
+						{
+							q->previous = p->previous;
+							q->next = p;
+							q->previous->next = q;
+							p->previous = q;
+						}
 					}
 				}
 			}
@@ -179,9 +190,10 @@ void Doubly_linked_list::print_list()
 {
 	for (Node* p = myHead;p != NULL;p = p->next)
 	{
-		cout << p->stock_symbol << setw(18) << p->num_shares
-			<< setw(9) << "$" <<p->price_per_shares << setw(13)
-			<< "$" <<p->total_value << endl;
+		cout << left << setw(18) << p->stock_symbol
+			<< left << setw(10) << p->num_shares
+			<< "$" << left << setw(18) << p->price_per_shares
+			<< "$" << left << setw(11) << p->total_value << endl;
 	}
 }
 
@@ -205,4 +217,118 @@ void Doubly_linked_list::load_portfolio()
 	}
 	portfolio_info.close();
 	return;
+}
+
+int Doubly_linked_list::check_shares(string A)
+{
+	int shares = 0;
+	for (Node* p = myHead;p != NULL;p = p->next)
+	{
+		if (p->stock_symbol == A)
+		{
+			shares = p->num_shares;
+			return shares;
+		}
+	}
+	return shares;
+}
+
+float Doubly_linked_list::check_price(string A)
+{
+	float price = 0;
+	for (Node* p = myHead;p != NULL;p = p->next)
+	{
+		if (p->stock_symbol == A)
+		{
+			price = p->price_per_shares;
+			return price;
+		}
+	}
+}
+
+void Doubly_linked_list::Delete_one(string A)
+{
+	if (length < 1)
+		return;
+	else if (!is_exsisting(A))
+		return;
+	else if (length == 1 && myHead->stock_symbol==A)
+	{
+		delete myHead;
+		myHead = NULL;
+		myTail = NULL;
+		length--;
+	}
+	else if (length >= 2)
+	{
+		Node* p;
+		for (p = myHead;p != NULL;p = p->next)
+		{
+			if ((p->stock_symbol) == A)
+			{
+				break;
+			}
+		}
+		if (p == myHead)
+		{
+			p->next->previous = NULL;
+			myHead = p->next;
+			delete p;
+			length--;
+		}
+		else if (p == myTail)
+		{
+			p->previous->next = NULL;
+			myTail = p->previous;
+			delete p;
+			length--;
+		}
+		else
+		{
+			p->previous->next = p->next;
+			p->next->previous = p->previous;
+			delete p;
+			length--;
+		}
+	}
+	return;
+}
+
+void Doubly_linked_list::Decrease_one(string A, int num)
+{
+	if (!is_exsisting(A))
+		return;
+	else
+	{
+		for (Node* p = myHead;p != NULL;p = p->next)
+		{
+			if (p->stock_symbol == A)
+			{
+				p->num_shares -= num;
+				p->total_value = p->num_shares * p->price_per_shares;
+				decreasing_sort();
+				return;
+			}
+		}
+	}
+	return;
+}
+
+void Doubly_linked_list::clear_ALL_nodes()
+{
+	if (myHead == NULL)
+	{
+		return;
+	}
+	Node* p=myHead;
+	while (p->next != NULL)
+	{
+		p = p->next;
+		delete p->previous;
+		length--;
+	}
+	delete myTail;
+	length--;
+	myHead = NULL;
+	myTail = NULL;
 }
