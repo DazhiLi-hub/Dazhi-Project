@@ -1,6 +1,8 @@
 #include<iostream>
 #include<iomanip>
-#include "extern_example.h"
+#include<MatPlot.h>
+#include<Windows.h>
+#include<cmath>
 using namespace std;//Global namespace
 /*
 int a=10;//Global variable
@@ -348,3 +350,16 @@ int main(void)
 	return 0;
 }
 */
+
+int main(void)
+{
+	double x[5]{ 1,2,3,4,5 };
+	double y[5]{ 1,3,2,4,3 };
+	int N{ 5 };
+	MatPlot::MatPlotInit();
+	MatPlot::plot(x, y, N);
+	Sleep(3000);
+	MatPlot::MatPlotClose();
+	cout << "Finished" << endl;
+	return 0;
+}

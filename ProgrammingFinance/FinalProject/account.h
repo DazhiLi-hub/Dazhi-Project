@@ -29,6 +29,7 @@ public:
 	int check_shares(string);
 	float check_price(string);
 	void Sell_Shares(string, int);
+	void record_value();
 };
 
 class BankAccount : public Account

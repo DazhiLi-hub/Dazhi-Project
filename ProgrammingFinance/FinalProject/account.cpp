@@ -110,6 +110,15 @@ void Stock_Portfolio_Account::Sell_Shares(string stock_symble, int num_shares)
 	}
 }
 
+void Stock_Portfolio_Account::record_value()
+{
+	ofstream value_records;
+	value_records.open("Portforlio_Value_Records.txt", ios::app);
+	value_records << cash_balance + portfolio_value << endl;
+	value_records.close();
+	return;
+}
+
 
 
 float BankAccount::get_balance(Stock_Portfolio_Account& A)

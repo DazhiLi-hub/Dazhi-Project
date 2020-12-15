@@ -6,6 +6,7 @@ int clear_ALL()
 	remove("Stock_Transaction_History.txt");
 	remove("Stock_Portfolio_Info.txt");
 	remove("Bank_Transaction_History.txt");
+	remove("Portforlio_Value_Records.txt");
 	return 0;
 }
 

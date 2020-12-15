@@ -1,9 +1,12 @@
 #include "account.h"
 #include "functions.h"
 #include<stdlib.h>
+#include<Windows.h>
+#include<cmath>
+#include<MatPlot.h>
 
 int main(void)
-{
+{	
 	srand((unsigned)time(NULL));
 	int random_num;
 	vector<stock> stock_day_1 = Stock_files_import("Result_1.txt");
@@ -118,11 +121,13 @@ int main(void)
 					{
 						searched_one = Find_Stock_Symbol(stock_day_1, stock_symbol);
 						my_stocks.update_portfolio(stock_day_1);
+						my_stocks.record_value();
 					}
 					else if (random_num == 2)
 					{
 						searched_one = Find_Stock_Symbol(stock_day_2, stock_symbol);
 						my_stocks.update_portfolio(stock_day_2);
+						my_stocks.record_value();
 					}
 					if (searched_one.name == "Fail")
 					{
@@ -206,6 +211,7 @@ int main(void)
 								my_stocks.update_portfolio(stock_day_1);
 							else if (random_num == 2)
 								my_stocks.update_portfolio(stock_day_2);
+							my_stocks.record_value();
 							write_history("Buy", searched_one.name, num_shares, searched_one.price_per_share);
 							write_bank_history("BuyShares", num_shares* searched_one.price_per_share
 								, my_bank.get_balance(my_stocks));
@@ -276,6 +282,7 @@ int main(void)
 								my_stocks.update_portfolio(stock_day_1);
 							if (random_num == 2)
 								my_stocks.update_portfolio(stock_day_2);
+							my_stocks.record_value();
 							write_history("Sell",stock_symbol,num_shares,
 								selling_price);
 							write_bank_history("SellShares", num_shares* selling_price
@@ -296,7 +303,39 @@ int main(void)
 				}
 				case '5':
 				{
-					cout << "Developing" << endl;
+					ifstream value_history("Portforlio_Value_Records.txt");
+					vector<float> values_tmp;
+					float value_tmp;
+					if (!value_history)
+					{
+						cout << "No portfolio changes --> No graph to show" << endl;
+					}
+					else
+					{
+						while (value_history.good() && !value_history.eof())
+						{
+							value_history >> value_tmp;
+							if (value_history.peek() == EOF)
+								break;
+							values_tmp.push_back(value_tmp);
+						}
+						double* x = new double[values_tmp.size()];
+						double* y = new double[values_tmp.size()];
+						int N = { int(values_tmp.size()) };
+						value_tmp = 0;
+						for (int i = 0;i < values_tmp.size();i++)
+						{
+							y[i] = values_tmp[i];
+							x[i] = value_tmp++;
+						}
+						MatPlot::MatPlotInit();
+						MatPlot::plot(x, y, N);
+						MatPlot::scatter(x, y, N);
+						//Sleep(10000);
+						//MatPlot::MatPlotClose();
+						delete x;
+						delete y;
+					}
 					break;
 				}
 				case '6':
@@ -344,6 +383,7 @@ int main(void)
 					else
 					{
 						my_bank.deposit_money(deposit_money, my_stocks);
+						my_stocks.record_value();
 						write_bank_history("Deposit", deposit_money,
 							my_bank.get_balance(my_stocks));
 						cout << "You have deposited $" << deposit_money
@@ -368,6 +408,7 @@ int main(void)
 					else
 					{
 						my_bank.withdraw_money(withdraw_money, my_stocks);
+						my_stocks.record_value();
 						write_bank_history("Withdraw", withdraw_money,
 							my_bank.get_balance(my_stocks));
 						cout << "You have withdrawed $" << withdraw_money
@@ -406,5 +447,6 @@ int main(void)
 		}
 	}
 	my_stocks.save_account_info();
+	MatPlot::MatPlotClose();
 	return 0;
 }

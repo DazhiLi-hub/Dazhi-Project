@@ -49,10 +49,10 @@ class RNNModel(nn.Module):
         self.drop = nn.Dropout(dropout)
         self.encoder = nn.Embedding(ntoken, ninp)
         #self.rnn = nn.LSTM(ninp, nhid, nlayers, dropout=dropout)
-        self.concat_tt_shape=[2,4,25,15]
-        self.output_tt_shape=[2,10,5,15]
-        self.tt_1_ranks=[1,2,2,2,1]
-        self.tt_2_ranks=[1,1,1,1,1]
+        self.concat_tt_shape=[10,6,5,10]
+        self.output_tt_shape=[10,6,5,5]
+        self.tt_1_ranks=[1,10,10,10,1]
+        self.tt_2_ranks=[1,20,20,20,1]
         self.tt_1=TTLSTMFull.TTLSTMFullCell(self.concat_tt_shape,self.output_tt_shape,self.tt_1_ranks)
         self.tt_2=TTLSTMFull.TTLSTMFullCell(self.concat_tt_shape,self.output_tt_shape,self.tt_2_ranks)
         self.decoder = nn.Linear(nhid, ntoken)
@@ -70,6 +70,7 @@ class RNNModel(nn.Module):
         emb = self.drop(self.encoder(input))
         #output, self.hidden = self.rnn(emb, self.hidden)
         hidden = self.tt_1(emb)
+        hidden=self.drop(hidden)
         output =self.tt_2(hidden)
         output = self.drop(output)
         decoded = self.decoder(output.view(output.size(0) * output.size(1), output.size(2)))
@@ -82,8 +83,8 @@ class RNNModel(nn.Module):
 
     def reset_history(self):
         self.hidden = tuple(V(v.data) for v in self.hidden)
-        self.tt_1.reset_parameters()
-        self.tt_2.reset_parameters()
+        #self.tt_1.reset_parameters()
+        #self.tt_2.reset_parameters()
 
 def get_parameter_number(net):
     total_num = sum(p.numel() for p in net.parameters())
@@ -95,7 +96,7 @@ def main():
     device = torch.device("cuda")
     # load PTB dataset
     batch_size = 20
-    learning_rate=30
+    learning_rate=0.009 #should be 30
     epochs=40
     #torch.manual_seed(141)
     #preparing datasets
@@ -111,7 +112,7 @@ def main():
     #train_iter,valid_iter,test_iter=datasets.PennTreebank.iters(batch_size=1328,bptt_len=35,device=device,root='./data')
     #apply models, loss functions and optimizer
     #model=LSTM_model(10002,1500,1500,2).to(device)
-    model=RNNModel(10002,1500,1500,2,20,dropout=0.65).to(device)
+    model=RNNModel(10002,1500,1500,2,20,dropout=0.65).to(device) #Dropout rate should be 0.65
     #model.load_state_dict(torch.load("./Long_trained.pt"))
     print(get_parameter_number(model))
     loss_function=nn.CrossEntropyLoss()
@@ -120,9 +121,11 @@ def main():
     Epoch_idxs=[]
     testing_status = []
     for epoch in range(1,epochs+1):
+        """
         if epoch > 14:
             learning_rate=learning_rate/1.15
             optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+        """
         model.train()
         for batch in tqdm(train_iter):
             model.reset_history()
@@ -133,9 +136,9 @@ def main():
             loss = loss_function(output.view(-1,10002), torch.squeeze(target.view(-1)))
             loss.backward()
             clip_grad_norm_(model.parameters(), 0.25)
-            for p in model.parameters():
-                p.data.add_(-learning_rate, p.grad.data)
-            #optimizer.step()
+            #for p in model.parameters():
+            #    p.data.add_(-learning_rate, p.grad.data)
+            optimizer.step()
 
         #Test validation set
         model.eval()
