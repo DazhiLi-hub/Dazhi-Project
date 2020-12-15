@@ -1,7 +1,7 @@
 #include "account.h"
 #include "functions.h"
 #include<stdlib.h>
-#include<Windows.h>
+//#include<Windows.h>
 #include<cmath>
 #include<MatPlot.h>
 
