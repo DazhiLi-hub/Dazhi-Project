@@ -167,8 +167,8 @@ def main():
     device = torch.device("cuda")
     # load PTB dataset
     batch_size = 20
-    learning_rate=8 #should be 30
-    epochs=30
+    learning_rate=7 #should be 30
+    epochs=50
     #torch.manual_seed(141)
     #preparing datasets
 
@@ -207,7 +207,7 @@ def main():
     Epoch_idxs=[]
     testing_status = []
     for epoch in range(1,epochs+1):
-        if epoch > 40:#should be 14
+        if epoch > 9:#should be 14
             learning_rate=learning_rate/1.05
             #optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
         model.train()
